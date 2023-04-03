@@ -1,0 +1,30 @@
+---
+author: Michael Elias
+pubDatetime: 2023-04-02
+title: Silly side projects are important
+postSlug: pokematch
+featured: false
+ogImage: /img/pokematchog.png
+tags:
+  - react
+  - preact
+  - tanstack-query
+  - pokemon
+  - vite
+description: I was messing around with the PokeApi to get an idea of how tanstack-query works to potentially use it for work
+---
+
+import Pokeball from '../../components/img/Pokeball';
+
+<img src="/img/pokecon.png" alt="Pokematch" class="float-right max-w-[200px] ml-5" />
+
+I wanted to create a simple game with my daughter to get the programming wheels turning in her head. It started as a card memory matching game and grew into an actually kinda fun game. There are 9 total rounds for each Pokemon generation, at the end of each round you are shown the Pokemon you just caught. You then have a chance to earn a "power up" by guessing which of those would win in a battle (this is based on a simple calculation of the sum of their stats). The powerups could be:
+<ul style="list-style:none;line-height:1;">
+	<li><Pokeball fill="#f8d878" /> reveal power (temporarily reveals all the cards)</li>
+	<li><Pokeball fill="#6844fc" /> turn power (takes away 2 turns)</li>
+	<li><Pokeball fill="#e40058" /> time power (takes 7 seconds off the clock)</li>
+</ul>
+
+<strong>Tech used:</strong> [Vite](https://vitejs.dev/), [Preact](https://preactjs.com/), [TanStack Query](https://tanstack.com/query/latest), [PokeApi](https://pokeapi.co/), hosted on [Vercel](https://vercel.com/).
+
+You can play the game [here](https://pokematch.vercel.app/) or view the source code [here](https://github.com/mikowl/pokematch).
