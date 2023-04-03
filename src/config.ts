@@ -1,20 +1,20 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-	website: "https://astro-paper.pages.dev/",
+	website: "https://www.mikowl.com",
 	author: "Michael Elias",
 	desc: "My personal space on the interwebs",
 	title: "Mikowl",
-	ogImage: "astropaper-og.jpg",
-	lightAndDarkMode: true,
+	ogImage: "/assets/logo.png",
+	lightAndDarkMode: false,
 	postPerPage: 3,
 };
 
 export const LOGO_IMAGE = {
 	enable: true,
 	svg: false,
-	width: 216,
-	height: 46,
+	width: 944,
+	height: 955,
 };
 
 export const SOCIALS: SocialObjects = [
@@ -92,49 +92,49 @@ export const SOCIALS: SocialObjects = [
 	},
 	{
 		name: "CodePen",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on CodePen`,
 		active: false,
 	},
 	{
 		name: "Discord",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on Discord`,
 		active: false,
 	},
 	{
 		name: "GitLab",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on GitLab`,
 		active: false,
 	},
 	{
 		name: "Reddit",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on Reddit`,
 		active: false,
 	},
 	{
 		name: "Skype",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on Skype`,
 		active: false,
 	},
 	{
 		name: "Steam",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on Steam`,
 		active: false,
 	},
 	{
 		name: "Telegram",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on Telegram`,
 		active: false,
 	},
 	{
 		name: "Mastodon",
-		href: "https://github.com/satnaing/astro-paper",
+		href: "",
 		linkTitle: `${SITE.title} on Mastodon`,
 		active: false,
 	},

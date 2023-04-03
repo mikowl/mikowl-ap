@@ -9,7 +9,7 @@ export interface Props {
 	activeNav?: "posts" | "tags" | "about" | "search";
 }
 
-const { activeNav } = Astro.props;
+// const { activeNav } = Astro.props;
 ---
 
 <header class="h-40">
@@ -77,8 +77,8 @@ const { activeNav } = Astro.props;
 			LOGO_IMAGE.enable ? (
 				<img
 					class="mx-auto -mt-12 w-36"
-					src={LOGO_IMAGE.svg ? logoSVG : logoPNG}
-					alt="AstroPaper Logo"
+					src={logoPNG}
+					alt="Mikowl Logo"
 					width={LOGO_IMAGE.width}
 					height={LOGO_IMAGE.height}
 				/>
