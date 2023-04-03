@@ -10,7 +10,7 @@ tags:
 description: I was all like whattt and they were all like nooooo way and I was like yessss and they were all like bruhhhhhh and I was like...
 ---
 
-<img src="/public/astro.svg" alt="Astro" class="float-right m-4 w-44" />
+<img src="/astro.svg" alt="Astro" class="float-right m-4 w-44" />
 
 I had an old blog written in [Jekyll](https://jekyllrb.com/) that I started in 2013 but it hadn't been updated in an embarassingly long time so I decided to start clean. So here we are, a new website built with [Astro](https://astro.build/). Unless you've been living under a rock (or if you're not a web dev) you've probably heard of it. Astro offers a number of advantages over other static site generators like Jekyll.
 
