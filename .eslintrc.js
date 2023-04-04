@@ -13,6 +13,7 @@ module.exports = {
 			"modules": true,
 		},
 	},
+	"plugins": ["frontmatter"],
 	overrides: [
 		{
 			files: ["*.astro"],

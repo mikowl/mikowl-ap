@@ -1,0 +1,15 @@
+---
+layout: ../layouts/AboutLayout.astro
+title: "About"
+---
+
+import { Tooltip } from 'react-tooltip'
+
+<img class="w-[26%] float-right ml-5 mt-1 scale-x-[-1]" src="/public/img/me-avatar-wave.png" alt="Michael Elias" />
+My name is Michael Elias, I currently reside in California with my lovely wife, 2 beautiful daughters, and a goodest big boi great dane name Kevin.
+
+I have experience with a large <a data-tooltip-id="techarray" style="text-decoration: none;" data-tooltip-content="['Typescript', 'CSS', 'React', 'MySQL', 'Vue', 'WordPress', 'Next'.js, 'Node'.js, ...]">[array]</a> of technologies but recently have been specializing in Shopify development and headless e&#8209;commerce sites. I am currently a senior front end engineer at Nordic Naturals, a large vitamins & supplements company where I help drive the company's goals and develop new features.
+
+<strong>Things I know and use:</strong> Javascript/Typescript, React, Next.js, Gatsby, Tailwind, Figma, Photoshop, GraphQL, working and wrangling API's of various natures.
+
+<Tooltip id="techarray" client:load />

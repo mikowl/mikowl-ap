@@ -6,25 +6,110 @@ postSlug: pokematch
 featured: false
 ogImage: /img/pokematchog.png
 tags:
+  - typescript
   - react
   - preact
   - tanstack-query
-  - pokemon
+  - pokeapi
   - vite
+  - vercel
 description: I was messing around with the PokeApi to get an idea of how tanstack-query works to potentially use it for work
 ---
-
 import Pokeball from '../../components/img/Pokeball';
+import { Tooltip } from 'react-tooltip'
 
 <img src="/img/pokecon.png" alt="Pokematch" class="float-right max-w-[200px] ml-5" />
 
 I wanted to create a simple game with my daughter to get the programming wheels turning in her head. It started as a card memory matching game and grew into an actually kinda fun game. There are 9 total rounds for each Pokemon generation, at the end of each round you are shown the Pokemon you just caught. You then have a chance to earn a "power up" by guessing which of those would win in a battle (this is based on a simple calculation of the sum of their stats). The powerups could be:
 <ul style="list-style:none;line-height:1;">
-	<li><Pokeball fill="#f8d878" /> reveal power (temporarily reveals all the cards)</li>
-	<li><Pokeball fill="#6844fc" /> turn power (takes away 2 turns)</li>
-	<li><Pokeball fill="#e40058" /> time power (takes 7 seconds off the clock)</li>
+  <li><Pokeball fill="#f8d878" /> reveal power (temporarily reveals all the cards)</li>
+  <li><Pokeball fill="#6844fc" /> turn power (takes away 2 turns)</li>
+  <li><Pokeball fill="#e40058" /> time power (takes 7 seconds off the clock)</li>
 </ul>
 
-<strong>Tech used:</strong> [Vite](https://vitejs.dev/), [Preact](https://preactjs.com/), [TanStack Query](https://tanstack.com/query/latest), [PokeApi](https://pokeapi.co/), hosted on [Vercel](https://vercel.com/).
+Side projects are great, even small trivial ones like this one. I still ended up learning some new things, like:
+
+## Playing sounds is finicky <span data-tooltip-id="my-tooltip" data-tooltip-content="as fuck" data-tooltip-place="top">af</span>, particularly on mobile
+
+Generally playing sounds behaved as I expected on desktop but as soon as I started testing on mobile I'd run into unexpected behavior. Sometimes the sounds would decide not to play, other times it wouldn't play at all. I spent hours debugging sound issues thinking there was something janky with my code. I had recently finished Josh W Comeau [The Joy of React](https://www.joyofreact.com/) course and stumbled across his [blog post](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/) about a "useSound" react hook he created. I wasn't necessarily expecting it to fix my sound issues but figured I'd give it a try since it gives you some nice features like:
+
+  - Prematurely stop the sound, or pause/resume the sound.
+  - Load an audio sprite and split it up into many individual sounds.
+  - Tweak playback speed to speed up / slow down sounds.
+  - Tons of event listeners.
+  - Lots of other advanced stuff, made possible by [Howler](https://howlerjs.com/).
+
+But lo and behold, it fixed all my sound issues! The secrety key though wasn't the nice hook Josh created but the audio library called Howler which makes working with audio in js super reliable across all platforms. 
+
+Give use-sound a try in your next project that includes audio.
+
+```bash
+npm add use-sound
+```
+
+## TanStack Query is rad
+
+I wanted to mess around with the latest tanstack query (previously known as react-query) because if you've ever had to fetch data in a react app you know it can get pretty ugly. You get all sorts of nice things out of the box like caching, refetching, and pagination. I'm not going to go into too much detail about it here but if you're interested in learning more about it check out the [docs](https://tanstack.com/query/latest). I also highly recommend checkout out TkDodo's [blog](https://tkdodo.eu/blog/all), he's got all sorts of excellent articles about tanstack query.
+
+Here's an example of how I used tanstack query to fetch random Pokemon from a specific generation:
+
+```typescript
+export const TOTAL_GENS = 9;
+const POKE_API_URL = "https://pokeapi.co/api/v2/pokemon";
+
+// specify the offset and limit for each generation
+const pokemonGenerationData: PokemonGenerationData = {
+  1: { offset: 0, limit: 151 },
+  2: { offset: 151, limit: 100 },
+  3: { offset: 251, limit: 135 },
+  4: { offset: 386, limit: 107 },
+  5: { offset: 493, limit: 156 },
+  6: { offset: 649, limit: 72 },
+  7: { offset: 721, limit: 88 },
+  8: { offset: 809, limit: 96 },
+  9: { offset: 905, limit: 103 },
+};
+
+const getRandomPokemon = async (gen: PokemonGeneration, BOARD_SIZES: number) => {
+  const { offset, limit } = pokemonGenerationData[gen];
+  const url = `${POKE_API_URL}/?offset=${offset}&limit=${limit}`;
+
+  try {
+    const response = await fetch(url);
+    const { results } = await response.json();
+    // here we're getting a random selection of pokemon from the generation
+    const randomPokemon = results.sort(() => Math.random() - 0.5).slice(0, BOARD_SIZES / 2);
+    // then we fetch the data for each pokemon
+    const promises = randomPokemon.map(async ({ url }: Result) => {
+      const response = await fetch(url);
+      return await response.json();
+    });
+
+    const pokemonData = await Promise.all(promises);
+    // this creates the card duplicates and shuffles
+    const shuffledCards = shuffle([...pokemonData, ...pokemonData]);
+    return shuffledCards;
+  } catch (error) {
+    console.warn("error", error);
+  } 
+};
+
+// finally our usePokemon hook
+export const usePokemon = (gen: PokemonGeneration, BOARD_SIZES: number): UseQueryResult<Pokemon[], Error> => {
+  return useQuery({
+    queryKey: ["pokemonList", gen],
+    queryFn: () => getRandomPokemon(gen, BOARD_SIZES),
+    staleTime: 1000 * 60 * 60 * 24,
+  });
+};
+
+// and what's awesome about tanstack query is we get things like 
+// isLoading, isFetching, error, and refetch out of the box
+const { data, isLoading, isFetching, error, refetch }: PokemonData = usePokemon(gen, boardSize);
+```
+
+That's the meat and potatoes of it, after each round I call `refetch()` when the gen changes and it fetches a new set of pokemon.
 
 You can play the game [here](https://pokematch.vercel.app/) or view the source code [here](https://github.com/mikowl/pokematch).
+
+<Tooltip client:load id="my-tooltip" />
