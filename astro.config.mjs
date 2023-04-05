@@ -33,8 +33,9 @@ export default defineConfig({
 			],
 		],
 		shikiConfig: {
-			theme: "one-dark-pro",
-			wrap: true,
+			theme: "poimandres",
+			langs: ['js', 'ts', 'html', 'css', 'astro'],
+			wrap: false,
 		},
 		extendDefaultPlugins: true,
 	},

@@ -140,6 +140,9 @@
 	border-radius: 7px;
 	font-size: 0.9375rem;
 }
+.astro-code::-webkit-scrollbar {
+	@apply h-2 !important;
+}
 p code, li code {
 	background: rgb(20 25 40 / 70%);
 	padding: 5px 10px;
