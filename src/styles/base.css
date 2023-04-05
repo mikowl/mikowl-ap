@@ -77,12 +77,17 @@
 
 	/* Headers  */
 
-	h2 {
+	h2, .h2 {
 		@apply mt-8 mb-4 text-xl font-bold text-skin-base;
 		color: var(--light-green);
 		border-left: 5px solid var(--light-green);
 		padding-left: 12px;
 		margin-left: -15px;
+	}
+	#about h3 {
+		color: var(--light-green);
+		font-size: 1.25rem;
+		border-bottom: 1px solid rgb(255 255 255 / 10%);
 	}
 	svg {
 		@apply inline-block w-6 h-6 fill-skin-base group-hover:fill-skin-accent;
@@ -219,4 +224,20 @@ blockquote {
 }
 .btn.btn-yellow {
 	background: var(--yellow);
+}
+.squiggle {
+	position: relative;
+}
+.squiggle::before {
+	content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: -0.10rem;
+	font-family: Times New Roman, Serif;
+	color: var(--light-green);
+	width: 100%;
+	position: absolute;
+	top: 12px;
+	left: -1px;
+	overflow: hidden;
 }

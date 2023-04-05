@@ -16,7 +16,9 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 				className="inline-block text-lg font-medium text-skin-accent focus-visible:no-underline focus-visible:underline-offset-0"
 			>
 				{secHeading ? (
-					<h2 className="text-lg font-medium hover:underline">{title}</h2>
+					<h2 className="mb-0 text-lg font-medium border-none text-skin-accent hover:underline">
+						{title}
+					</h2>
 				) : (
 					<h3 className="text-lg font-medium hover:underline">{title}</h3>
 				)}
