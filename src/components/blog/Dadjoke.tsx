@@ -15,8 +15,8 @@ const Dadjoke = () => {
 
 	return (
 		<>
-			<button className="btn btn-purple w-full" onClick={generateDadJoke}>
-				👴 Generate Dad Joke 🤪
+			<button className="w-full btn btn-purple" onClick={generateDadJoke}>
+				{joke ? "👴 Generate Another Dad Joke 🤪" : "👴 Generate Dad Joke 👴"}
 			</button>
 			{joke && <blockquote>{joke}</blockquote>}
 		</>

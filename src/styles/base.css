@@ -37,17 +37,15 @@
 		display: block;
 	}
 	body {
-		@apply flex min-h-screen flex-col bg-skin-fill font-mono text-skin-base 
-    selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
+		@apply flex flex-col min-h-screen font-mono bg-skin-fill text-skin-base selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
 		background: url('/img/woodsbg.jpg') no-repeat center center fixed;
 	}
 	section,
 	footer {
-		@apply mx-auto max-w-4xl px-4;
+		@apply max-w-4xl px-4 mx-auto;
 	}
 	a {
-		@apply outline-2 outline-offset-1 outline-skin-fill 
-    focus-visible:no-underline focus-visible:outline-dashed;
+		@apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
 		color: var(--purple-light);
 		text-decoration-line: underline;
     text-decoration-style: dashed;
@@ -80,19 +78,17 @@
 	/* Headers  */
 
 	h2 {
-		@apply text-xl font-bold mt-8 mb-4 text-skin-base;
+		@apply mt-8 mb-4 text-xl font-bold text-skin-base;
 		color: var(--light-green);
 		border-left: 5px solid var(--light-green);
 		padding-left: 12px;
 		margin-left: -15px;
 	}
 	svg {
-		@apply inline-block h-6 w-6 fill-skin-base group-hover:fill-skin-accent;
+		@apply inline-block w-6 h-6 fill-skin-base group-hover:fill-skin-accent;
 	}
 	svg.icon-tabler {
-		@apply inline-block h-6 w-6 scale-125 fill-transparent 
-    stroke-current stroke-2 opacity-90 group-hover:fill-transparent 
-    sm:scale-110;
+		@apply inline-block w-6 h-6 scale-125 stroke-current stroke-2 fill-transparent opacity-90 group-hover:fill-transparent sm:scale-110;
 	}
 	tbody td:first-child,
 	tfoot td:first-child {
@@ -142,7 +138,7 @@
 	padding: 20px;
 	margin: 2rem 0;
 	border-radius: 7px;
-	font-size: 0.875rem;
+	font-size: 0.9375rem;
 }
 p code, li code {
 	background: rgb(20 25 40 / 70%);

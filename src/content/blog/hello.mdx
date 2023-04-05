@@ -15,7 +15,7 @@ description: I was all like whattt and they were all like nooooo way and I was l
 import Dadjoke from '../../components/blog/Dadjoke'
 import DumbButton from '../../components/blog/DumbButton'
 
-<img src="/astro.svg" alt="Astro" class="float-right m-4 w-1/4" />
+<img src="/astro.svg" alt="Astro" class="float-right w-1/4 m-4" />
 
 I had an old blog written in [Jekyll](https://jekyllrb.com/) that I started in 2013 but it hadn't been updated in an embarassingly long time so I decided to start so fresh and so clean clean. Here we are, a new website built with [Astro](https://astro.build/). Unless you've been living under a rock (or if you're not a web dev) you've probably heard of it.
 
@@ -64,7 +64,7 @@ const Dadjoke = () => {
   return (
     <>
       <button className="btn" onClick={generateDadJoke}>
-        👴 Generate Dad Joke 🤪
+        {joke ? "👴 Generate Another Dad Joke 🤪" : "👴 Generate Dad Joke 👴"}
       </button>
       {joke && <blockquote>{joke}</blockquote>}
     </>
