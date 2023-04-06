@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
 	:root,
 	html[data-theme="light"] {
@@ -27,6 +26,7 @@
 		--orange: #ff9d60;
 		--light-green: #73d9b0;
 		--yellow: #f8d878;
+		--chevron-size: 12px;
 	}
 	#sun-svg,
 	html[data-theme="dark"] #moon-svg {
@@ -38,7 +38,10 @@
 	}
 	body {
 		@apply flex flex-col min-h-screen font-mono bg-skin-fill text-skin-base selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
-		background: url('/img/woodsbg.jpg') no-repeat center center fixed;
+		background: url('/img/woodsy.jpg') no-repeat center fixed;
+		background-size: cover;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 	section,
 	footer {
@@ -48,7 +51,7 @@
 		@apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
 		color: var(--purple-light);
 		text-decoration-line: underline;
-    text-decoration-style: dashed;
+		text-decoration-style: dashed;
 		text-underline-offset: 0.4em;
 	}
 	.tags-container {
@@ -58,11 +61,12 @@
 		text-decoration: none;
 	}
 	p {
-		margin: 1.25rem 0;
+		margin: 1.5rem 0;
 	}
 	#article p, #about p, #article ul, #about ul {
 		font-size: 1.125rem;
-		font-weight: 300;
+		font-weight: 400;
+		line-height: 1.6;
 	}
 	.posts-list a, #recent-posts a {
 		text-decoration: none;
@@ -78,11 +82,14 @@
 	/* Headers  */
 
 	h2, .h2 {
-		@apply mt-8 mb-4 text-xl font-bold text-skin-base;
+		@apply mt-10 mb-6 text-2xl font-bold text-skin-base;
 		color: var(--light-green);
 		border-left: 5px solid var(--light-green);
 		padding-left: 12px;
 		margin-left: -15px;
+	}
+	h3 {
+		@apply text-xl;
 	}
 	#about h3 {
 		color: var(--light-green);
@@ -144,6 +151,8 @@
 	margin: 2rem 0;
 	border-radius: 7px;
 	font-size: 0.9375rem;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
 }
 .astro-code::-webkit-scrollbar {
 	@apply h-2 !important;
@@ -200,13 +209,12 @@ article hr {
 	margin: 2rem 0;
 }
 
-blockquote {
+blockquote, aside {
 	@apply text-lg font-bold text-skin-base;
 	color: var(--color-text-base);
 	border-left: 5px solid var(--purple-light);
 	padding-left: 12px;
-	margin-left: -15px;
-	margin-top: 1rem;
+	margin: 2.5rem 0 2.5rem -15px;
 	font-weight: 300;
 	font-style: italic;
 }
@@ -226,18 +234,82 @@ blockquote {
 	background: var(--yellow);
 }
 .squiggle {
-	position: relative;
+	text-decoration-style: wavy;
+	text-decoration-thickness: 2px;
+	text-decoration-color: var(--light-green);
+	text-decoration-line: underline;
+	text-underline-offset: 4px;
 }
-.squiggle::before {
-	content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-	font-size: 1rem;
-	font-weight: 500;
-	letter-spacing: -0.10rem;
-	font-family: Times New Roman, Serif;
-	color: var(--light-green);
-	width: 100%;
+
+/* Tooltip */
+.tooltip-container {
+	position: relative;
+	display: inline-block;
+	cursor: default;
+	color: var(--purple-light);
+}
+
+.tooltip-content {
 	position: absolute;
-	top: 12px;
-	left: -1px;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 5px 7px;
+	background-color: rgb(0 0 0 / 50%);
+	color: #fff;
+	font-size: 0.875rem;
+	border-radius: 4px;
+	white-space: nowrap;
+	pointer-events: none;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.tooltip-container:hover .tooltip-content {
+	opacity: 1;
+}
+
+.accordion-toggle {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+	align-items: center;
+  width: 100%;
+  margin: 0;
+	font-size: 1.25rem;
+	background: rgba(0 0 0 / 20%);
+	border-radius: 7px;
+	padding: 8px 15px;
+	margin: 2rem auto 0 -15px;
+}
+
+.accordion-content {
+	max-height: 0;
 	overflow: hidden;
+	transition: all 0.3s ease;
+}
+.accordion-content.active {
+	max-height: 1000px;
+}
+
+.chevron-down {
+	border: 2px solid transparent;
+	transition: all .3s ease-in-out;
+}
+
+.chevron-down.open {
+	transform: rotate(180deg) translateX(-4px);
+}
+
+.chevron-down::after {
+	content: '';
+	display: block;
+	box-sizing: border-box;
+	width: var(--chevron-size);
+	height: var(--chevron-size);
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	transform: rotate(45deg) translateY(-4px);
+	transform-origin: center;
 }
