@@ -5,7 +5,6 @@ import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
-import 'react-tooltip/dist/react-tooltip.css'
 
 export interface Props {
 	post: CollectionEntry<"blog">;
@@ -23,9 +22,9 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 
 <Layout title={title} author={author} description={description} ogImage={ogUrl}>
 	<Header />
-	<div class="mx-auto flex w-full max-w-4xl justify-start px-2">
+	<div class="flex justify-start w-full max-w-4xl px-2 mx-auto">
 		<button
-			class="focus-outline mt-8 mb-2 flex hover:opacity-75"
+			class="flex mt-8 mb-2 focus-outline hover:opacity-75"
 			onclick="history.back()"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +37,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 	<main id="main-content">
 		<h1 class="post-title">{title}</h1>
 		<Datetime datetime={pubDatetime} size="lg" className="my-2" />
-		<article id="article" role="article" class="prose mx-auto mt-8 max-w-4xl">
+		<article id="article" role="article" class="max-w-4xl mx-auto mt-8 prose">
 			<Content />
 		</article>
 		<ul class="tags-container">
@@ -56,7 +55,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 		@apply font-light text-lg;
 	}
 	.post-title {
-		@apply text-2xl font-semibold text-skin-accent;
+		@apply text-3xl font-semibold text-skin-accent;
 	}
 	.tags-container {
 		@apply my-8;
