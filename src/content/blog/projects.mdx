@@ -16,7 +16,7 @@ tags:
 description: I was messing around with the PokeApi to get an idea of how tanstack-query works to potentially use it for work
 ---
 import Pokeball from '../../components/img/Pokeball';
-import { Tooltip } from 'react-tooltip'
+import Tooltip from '../../components/Tooltip';
 
 <img src="/img/pokecon.png" alt="Pokematch" class="float-right max-w-[200px] ml-5" />
 
@@ -29,7 +29,7 @@ I wanted to create a simple game with my daughter to get the programming wheels 
 
 Side projects are great, even small trivial ones like this one. I still ended up learning some new things, like:
 
-## Playing sounds is finicky <span data-tooltip-id="my-tooltip" data-tooltip-content="as fuck" data-tooltip-place="top">af</span>, particularly on mobile
+## Playing sounds is finicky <Tooltip client:visible content="*as fuck">af</Tooltip>, particularly on mobile
 
 Generally playing sounds behaved as I expected on desktop but as soon as I started testing on mobile I'd run into unexpected behavior. Sometimes the sounds would decide not to play, other times it wouldn't play at all. I spent hours debugging sound issues thinking there was something janky with my code. I had recently finished Josh W Comeau [The Joy of React](https://www.joyofreact.com/) course and stumbled across his [blog post](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/) about a "useSound" react hook he created. I wasn't necessarily expecting it to fix my sound issues but figured I'd give it a try since it gives you some nice features like:
 
@@ -111,5 +111,3 @@ const { data, isLoading, isFetching, error, refetch }: PokemonData = usePokemon(
 That's the meat and potatoes of it, after each round I call `refetch()` when the gen changes and it fetches a new set of pokemon.
 
 You can play the game [here](https://pokematch.vercel.app/) or view the source code [here](https://github.com/mikowl/pokematch).
-
-<Tooltip client:load id="my-tooltip" />
