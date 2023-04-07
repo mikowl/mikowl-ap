@@ -219,6 +219,7 @@ blockquote, aside {
 	font-style: italic;
 }
 .btn {
+	cursor: pointer;
 	background: var(--light-green);
 	color: #1d2134;
 	font-weight: 600;
@@ -277,7 +278,7 @@ blockquote, aside {
 	align-items: center;
   width: 100%;
   margin: 0;
-	font-size: 1.25rem;
+	font-size: 0.875em;
 	background: rgba(0 0 0 / 20%);
 	border-radius: 7px;
 	padding: 8px 15px;
@@ -286,11 +287,15 @@ blockquote, aside {
 
 .accordion-content {
 	max-height: 0;
+	opacity: 0;
+	transform: translate(0, -15px);
 	overflow: hidden;
 	transition: all 0.3s ease;
 }
 .accordion-content.active {
-	max-height: 1000px;
+	opacity: 1;
+	transform: translate(0);
+	max-height: 100rem;
 }
 
 .chevron-down {
