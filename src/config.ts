@@ -7,7 +7,7 @@ export const SITE: Site = {
 	title: "Mikowl",
 	ogImage: "/assets/logo.png",
 	lightAndDarkMode: false,
-	postPerPage: 3,
+	postPerPage: 5,
 };
 
 export const LOGO_IMAGE = {

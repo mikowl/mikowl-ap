@@ -43,8 +43,5 @@ export default defineConfig({
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},
-		ssr: {
-			noExternal: ["react-tooltip"],
-		},
 	},
 });

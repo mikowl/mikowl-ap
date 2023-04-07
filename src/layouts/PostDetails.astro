@@ -43,6 +43,15 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 		<ul class="tags-container">
 			{tags.map(tag => <Tag name={tag} />)}
 		</ul>
+		<div class="text-center">
+			<a type="button" href="/posts" tabindex="0" class="no-underline">
+				More Posts
+				<svg xmlns="http://www.w3.org/2000/svg" class="astro-J7PV25F6"><path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" class="astro-J7PV25F6"></path>
+				</svg>
+</a>
+		</div>
+		<!-- Next blog post -->
+
 	</main>
 	<Footer />
 </Layout>

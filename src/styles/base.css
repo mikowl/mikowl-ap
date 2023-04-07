@@ -114,9 +114,9 @@
 	}
 
 	/* width */
-	::-webkit-scrollbar {
+	/* ::-webkit-scrollbar {
 		@apply w-2;
-	}
+	} */
 
 	/* Track */
 	::-webkit-scrollbar-track {
@@ -218,6 +218,31 @@ blockquote, aside {
 	font-weight: 400;
 	font-style: italic;
 }
+aside {
+	position: relative;
+	background-color: rgb(19 82 69 / 70%);
+	border-right: 5px solid var(--purple-light);
+	border-radius: 7px;
+	padding: 10px 20px;
+	margin: 2.5rem 0px 2.5rem 10px;
+}
+@media (min-width: 950px) {
+	aside {
+		margin: 2.5rem -20px 2.5rem -20px;
+	}
+}
+aside svg {
+	position: absolute;
+	left: -22px;
+	top: 50%;
+	transform: translateY(-50%);
+	fill: red;
+	background: #164541;
+	border-radius: 100%;
+	padding: 3px;
+	width: 40px;
+	height: 40px;
+}
 .btn {
 	cursor: pointer;
 	background: var(--light-green);
@@ -260,6 +285,8 @@ blockquote, aside {
 	background-color: var(--light-green);
 	color: rgb(29 32 49);
 	font-size: 0.875rem;
+	font-weight: 400;
+	-webkit-font-smoothing: subpixel-antialiased;
 	border-radius: 4px;
 	white-space: nowrap;
 	pointer-events: none;
@@ -318,4 +345,28 @@ blockquote, aside {
 	border-right: 1px solid;
 	transform: rotate(45deg) translateY(-4px);
 	transform-origin: center;
+}
+
+.card-outer {
+	display: inline-block;
+	--radius: 20px;
+	--border: 10px;
+	/* Outer = inner + space between */
+	border-radius: calc(var(--radius) + var(--border));
+	padding: var(--border);
+	background: var(--light-green);
+}
+
+.card-inner {
+	border-radius: var(--radius);
+}
+
+.afancylist {
+  list-style: rnbwdots;
+}
+
+@counter-style rnbwdots {
+  system: cyclic;
+  symbols: "🔴" "🟠" "🟡" "🟢" "🔵" "🟣";
+  suffix: " ";
 }

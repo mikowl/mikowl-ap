@@ -3,6 +3,7 @@ author: Michael Elias
 pubDatetime: 2023-04-06
 title: You may not need that npm package
 postSlug: you-may-not-need-that-npm-package
+postThumb: /img/thumbs/maynotneednpm.jpg
 featured: false
 draft: false
 tags:
@@ -28,7 +29,7 @@ After installing the [Webpack Bundle Analyzer](https://www.npmjs.com/package/web
 I needed a simple tooltip component so I reached for [react-tooltip](https://www.npmjs.com/package/react-tooltip). I ran into some issues with it though in Astro/mdx files and also I really only need a fraction of it's features. It's pretty gnarly that a simple tooltip package is like 45kb minified. So anyways I decided to build my own. I started by looking at the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) for tooltips.  
 
 <aside>
-<Icon pack="ion" name="information-circle-outline" className="float-left translate-y-[3px] -translate-x-1" />
+<Icon name="ion:information-circle-outline" />
 General note, if you're going to be building your own component/UI I highly recommend checking out [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/). It's a great resource for ensuring your UI is accessible and to follow best practices.
 </aside>
 
