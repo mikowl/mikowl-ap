@@ -2,7 +2,7 @@
 author: Michael Elias
 pubDatetime: 2023-04-02
 title: Silly side projects are important
-postSlug: pokematch
+postSlug: silly-side-projects-are-important
 featured: false
 ogImage: /img/pokematchog.png
 tags:
@@ -18,9 +18,12 @@ description: I was messing around with the PokeApi to get an idea of how tanstac
 import Pokeball from '../../components/img/Pokeball';
 import Tooltip from '../../components/Tooltip';
 
-<img src="/img/pokecon.png" alt="Pokematch" class="float-right max-w-[200px] ml-5" />
+<img src="/img/pokecon.png" alt="Pokematch" class="float-right max-w-[150px] sm:max-w-[220px] ml-5" />
 
-I wanted to create a simple game with my daughter to get the programming wheels turning in her head. It started as a card memory matching game and grew into an actually kinda fun game. There are 9 total rounds for each Pokemon generation, at the end of each round you are shown the Pokemon you just caught. You then have a chance to earn a "power up" by guessing which of those would win in a battle (this is based on a simple calculation of the sum of their stats). The powerups could be:
+I wanted to create a simple game with my daughter to get the programming wheels turning in her head. It started as a card memory matching game and grew into an actually kinda fun game. There are 9 total rounds for each Pokemon generation, at the end of each round you are shown the Pokemon you just caught. You then have a chance to earn a "power up" by guessing which of those would win in a battle (this is based on a simple calculation of the sum of their stats). 
+
+The powerups could be:
+
 <ul style="list-style:none;line-height:1;">
   <li><Pokeball fill="#f8d878" /> reveal power (temporarily reveals all the cards)</li>
   <li><Pokeball fill="#6844fc" /> turn power (takes away 2 turns)</li>
