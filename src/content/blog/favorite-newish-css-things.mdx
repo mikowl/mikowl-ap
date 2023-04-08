@@ -153,6 +153,16 @@ Example:
 
 This example is a bit over the top but I mean look how easy it is to make your list bullet anything you want.
 
+## Backdrop blur
+
+I recall trying to recreate this effect back in the day and it was a real pain in the <span><Tooltip client:visible content="*Ass">a**</Tooltip></span>, now you can simply add <span><Tooltip client:visible content="or tw class 'backdrop-blur-md'">backdrop-filter: blur(12px)</Tooltip></span> to your element to create a slick sort of frosted window effect. I've seen it used a lot recently for like sticky navigation type of deals, heck even the [Tailwind docs](https://tailwindcss.com/docs/installation) have it.
+
+In action (hover over Mr. Freeman)
+
+<div class="rounded-xl flex items-center group bg-cover h-96 w-96" style="background-image: url('/img/mfhcc.jpg');">
+<div class="opacity-0 transform translate-y-[200%] group-hover:opacity-100 group-hover:translate-y-20 transition duration-300 ease-in backdrop-blur-md text-center group-hover m-6 p-4 font-normal text-xl text-white rounded-l">Morgan Freeman holding cotton candy.</div>
+</div>
+
 ## Share 👍
 
 Do you have any neat CSS things you've stumbled upon recently?<br /> Let me know on [twitter](https://twitter.com/mikowl)!
