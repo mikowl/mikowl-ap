@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import useUniqueId from "../utils/useUniqueId";
 
-type TooltipPros = {
+type TooltipProps = {
 	content: string;
 	children: React.ReactElement;
 };
 
-const Tooltip: React.FC<TooltipPros> = ({ content, children }) => {
+const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
 	const [show, setShow] = useState(false);
 	const tooltipId = useUniqueId("tooltip");
 
