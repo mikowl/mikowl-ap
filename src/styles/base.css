@@ -299,13 +299,13 @@ aside svg {
 }
 
 .accordion-toggle {
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
-  width: 100%;
-  margin: 0;
+	width: 100%;
+	margin: 0;
 	font-size: 0.875em;
 	background: rgba(0 0 0 / 20%);
 	border-radius: 7px;
@@ -362,11 +362,29 @@ aside svg {
 }
 
 .afancylist {
-  list-style: rnbwdots;
+	list-style: rnbwdots;
 }
 
 @counter-style rnbwdots {
-  system: cyclic;
-  symbols: "🔴" "🟠" "🟡" "🟢" "🔵" "🟣";
-  suffix: " ";
+	system: cyclic;
+	symbols: "🔴" "🟠" "🟡" "🟢" "🔵" "🟣";
+	suffix: " ";
+}
+
+.embed-container {
+	position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%;
+	} 
+
+.embed-container iframe, 
+.embed-container object, 
+.embed-container embed {
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%;
 }
