@@ -12,13 +12,13 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 	return (
 		<li className="my-10 flex flex-wrap sm:flex-nowrap items-center gap-8">
 			{postThumb ? (
-				<div className="post-thumb basis-full sm:basis-1/5">
+				<div className="post-thumb basis-full sm:basis-1/4">
 					<img src={postThumb} className="rounded-md max-w-sm w-full" />
 				</div>
 			) : (
 				<div></div>
 			)}
-			<div className="post-content basis-full sm:basis-4/5">
+			<div className="post-content basis-full sm:basis-3/4">
 				<a
 					href={href}
 					className="inline-block text-lg font-medium text-skin-accent focus-visible:no-underline focus-visible:underline-offset-0"
