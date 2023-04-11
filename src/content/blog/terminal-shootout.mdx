@@ -1,0 +1,151 @@
+---
+author: Michael Elias
+pubDatetime: 2023-04-11
+title: Terminal Shootout
+postSlug: terminal-shootout
+featured: false
+postThumb: /img/thumbs/terminals.png
+tags:
+  - vscode
+  - tools
+description: I'm a sucker for trying out new terminal emulators. Here I'll go over some of the pros and cons of the most popular terminals out there
+---
+
+import Tooltip from '../../components/Tooltip'
+
+I'm a sucker for trying out new terminal emulators. They all pretty much do the same thing and to be honest the out of the box macOs is totes fine but I'm a nerd and collect terminals like pokemon cards. Here I'll go over some of the pros and cons of the most popular terminals out there.
+
+## Hyper
+
+<img src="/img/hyper.png" alt="Hyper terminal" class="w-full" />
+
+[Hyper](https://hyper.is/) is a fresh and flashy terminal built on web technologies like Electron, React, and Redux. It's highly extensible, allowing you to customize and extend its functionality with plugins.
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Very easy to customize
+  - Looks pretty pretty out of the box
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - Performance can be sluggish (although it's gotten better in v3)
+</div>
+</div>
+
+## iTerm2
+
+<img src="/img/iterm.png" alt="iTerm2 terminal" class="w-full" />
+
+[iTerm2](https://iterm2.com/) is a tried and true macOS terminal emulator, known for its extensive features and customization options. I used iTerm2 for many many years and never had any issues with it.
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Built-in support for tabs, split panes, and more
+  - Mature and well-maintained
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - macOS only
+  - Probably your dad's terminal
+</div>
+</div>
+
+## Alacritty
+
+<img src="/img/alacritty.png" alt="Alacritty terminal" class="w-full rounded-md max-w-[96%] mx-auto shadow-lg" />
+
+[Alacritty](https://alacritty.org/) is a <span><Tooltip client:visible content="lol it really is tho 🚀">blazingly-fast</Tooltip></span>, GPU-accelerated terminal emulator that values simplicity and performance above all else. It has somewhat of a cult following, kinda like the arch linux of terminal emulators. Like if you ask "Which terminal do you use?" on twitter, the alacritty folks pop out of the woodworks.
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Probably the fastest terminal in this list
+  - Cross-platform
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - Limited customization and features compared to other terminals
+  - Emoji and ligature support is not great
+</div>
+</div>
+
+## Kitty
+
+<img src="/img/kitty.png" alt="Kitty terminal" class="w-full rounded-md max-w-[96%] mx-auto shadow-lg" />
+
+[Kitty](https://sw.kovidgoyal.net/kitty/) is another GPU-accelerated terminal emulator, but it aims to strike a balance between performance and features. This has been my personal favorite terminal for a while now, it's almost as fast as alacritty and looks super slick. To be honest the only reason I use Kitty over Alacritty is because I couldn't figure out how to make the title bar transparent in Alacritty.
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Fast and efficient
+  - Rich in features, such as ligature support and image rendering
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - Tad more complex configuration compared to Alacritty
+  - Logo is lame
+</div>
+</div>
+
+## Tabby
+
+<img src="/img/tabby.png" alt="Tabby terminal" class="w-full" />
+
+[Tabby](https://tabby.sh/) is a modern and extensible terminal emulator that emphasizes user experience and productivity. It offers some cool features like "Smart tabs" that can detect progress and notify when a process is done. It also has a built in quake mode which is rad.
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Beautiful and user-friendly interface
+  - Extensible with plugins
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - Performance might not be as fast as GPU-accelerated terminals
+</div>
+</div>
+
+## Warp
+
+<img src="/img/warp.png" alt="Warp terminal" class="w-full" />
+
+[Warp](https://www.warp.dev/) is a cloud-powered terminal emulator that enables real-time collaboration and seamless integration with cloud services. They state "Writing code in your terminal shouldn’t feel like 1978" but part of my favorite thing about terminals are the 1978 vibes. I can't be alone in this right? Anyways, it's cool and there are a shitton of features but it's not for me. 
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Fully native, built with Rust
+  - Real-time collaboration features
+  - Tons of features
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - Reliance on the cloud can raise security and privacy concerns
+  - Almost too many features
+  - Not open source
+  - macOs only
+</div>
+</div>
+
+## Terminal (macOS)
+
+<img src="/img/terminal.png" alt="macOS terminal" class="w-full" />
+
+The macOS default Terminal is a reliable and straightforward terminal emulator that gets the job done. I hadn't opened this up in forever, aw I kinda miss it. I still have a tmux session running, which I really only used for split screens so stopped using it since kitty has built in split screen functionality.
+
+<div class="flex gap-6">
+<div class="bg-[#4ade80] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Pros:
+  - Pre-installed on macOS
+  - Simple and reliable
+</div>
+<div class="bg-[#f87171] bg-opacity-20 basis-1/2 rounded-md px-4 py-2">
+Cons:
+  - Limited features and customization options compared to other terminals
+</div>
+</div>
+
+Dangggg did you know there were so many terminal emulators out there? Which one is your favorite?
