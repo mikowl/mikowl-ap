@@ -190,6 +190,7 @@ ul {
 }
 ul li {
 	margin: 1rem 0;
+	line-height: 1.4;
 }
 ul li::marker {
 	color: var(--purple-light);
@@ -392,4 +393,9 @@ aside svg {
 	left: 0; 
 	width: 100%; 
 	height: 100%;
+}
+
+
+#main-content.astro-VJ4TPSPI ul {
+	margin-left: 20px;
 }
