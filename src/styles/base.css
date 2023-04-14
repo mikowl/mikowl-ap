@@ -60,6 +60,7 @@
 	.tags-container a {
 		text-decoration: none;
 	}
+	main ul.tags-container {margin-left: 0;}
 	p {
 		margin: 1.5rem 0;
 	}
