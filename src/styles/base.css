@@ -394,3 +394,8 @@ aside svg {
 	width: 100%; 
 	height: 100%;
 }
+
+.terminal-shootout ul {
+	margin-left: 1.5rem;
+	line-height: 1.4;
+}
