@@ -27,6 +27,7 @@
 		--light-green: #73d9b0;
 		--yellow: #f8d878;
 		--chevron-size: 12px;
+		--pixelBorder: 4px 0 transparent, -4px 0 transparent, 0 -4px transparent, 0 4px transparent;
 	}
 	#sun-svg,
 	html[data-theme="dark"] #moon-svg {
@@ -396,7 +397,38 @@ aside svg {
 	height: 100%;
 }
 
-.terminal-shootout ul {
+.terminal-shootout ul,
+.exploring-css-solutions-for-react ul {
 	margin-left: 1.5rem;
 	line-height: 1.4;
 }
+
+.pros-cons h4 {
+	font-size: 1.5rem;
+	margin: 0rem 0 -1rem;
+	font-weight: 700;
+	width: calc(100% + 32px);
+	margin-left: -16px;
+	padding: 10px 20px;
+}
+
+.pros-cons > div {
+	background-color: rgb(74 222 128 / 10%);
+	/* box-shadow: 5px 5px 0 rgb(0 0 0 / 15%); */
+	--bsShadow: rgb(74 222 128 / 10%);
+	padding: 0.5rem 1rem;
+	/* border-radius: 0.375rem; */
+	flex-basis: 50%;
+	box-shadow: var(--pixelBorder),
+	8px 0 var(--bsShadow), -8px 0 var(--bsShadow), 0 -8px var(--bsShadow), 0 8px var(--bsShadow), 0 0 0 4px var(--bsShadow);
+}
+
+
+.pros-cons > div:nth-child(2) {
+	background-color: rgb(248 113 113 / 10%);
+	--bsShadow: rgb(248 113 113 / 10%);
+	box-shadow: var(--pixelBorder),
+	8px 0 var(--bsShadow), -8px 0 var(--bsShadow), 0 -8px var(--bsShadow), 0 8px var(--bsShadow), 0 0 0 4px var(--bsShadow);
+}
+
+
