@@ -44,6 +44,9 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
+	#main-content {
+		padding: 0 2rem;
+	}
 	section,
 	footer {
 		@apply max-w-4xl px-4 mx-auto;
@@ -84,7 +87,7 @@
 	/* Headers  */
 
 	h2, .h2 {
-		@apply mt-10 mb-6 text-2xl font-bold text-skin-base;
+		@apply mt-20 mb-6 text-2xl font-bold text-skin-base;
 		color: var(--light-green);
 		border-left: 5px solid var(--light-green);
 		padding-left: 12px;
@@ -432,3 +435,8 @@ aside svg {
 }
 
 
+@media (max-width: 600px) {
+	.pros-cons {
+		flex-direction: column;
+	}
+}
