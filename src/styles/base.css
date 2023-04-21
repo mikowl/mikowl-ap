@@ -95,6 +95,8 @@
 	}
 	h3 {
 		@apply text-xl;
+		color: var(--purple-light);
+		font-weight: bold;
 	}
 	h4 {
 		font-size: 1.5rem;
@@ -219,6 +221,8 @@ hr {
 article hr {
 	margin: 2rem 0;
 }
+
+small { font-size: 0.75rem; }
 
 blockquote, aside {
 	@apply text-lg font-bold text-skin-base;
@@ -438,6 +442,12 @@ aside svg {
 	8px 0 var(--bsShadow), -8px 0 var(--bsShadow), 0 -8px var(--bsShadow), 0 8px var(--bsShadow), 0 0 0 4px var(--bsShadow);
 }
 
+.rating {
+	display: inline-block;
+	color: #e2e28c;
+	font-size: 1.75rem;
+	transform: translateY(2px);
+}
 
 @media (min-width: 600px) {
 	.pros-cons {

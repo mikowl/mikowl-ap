@@ -1,0 +1,313 @@
+---
+author: Michael Elias
+pubDatetime: 2023-04-14
+title: Exploring CSS solutions for React
+postSlug: exploring-css-solutions-for-react
+featured: false
+draft: true
+postThumb: /img/thumbs/extensions.jpg
+tags:
+  - css
+  - tools
+description: Let's explore some of the different ways we can style our React apps
+---
+
+import Tooltip from '../../components/Tooltip'
+
+It can be overwhelming trying to decide which CSS solution to use when building a React app.
+Although I'm focusing on React most of these solutions can be used with other popular frameworks.
+
+## 💅🏾 Styled Components 
+Styled Components is a popular CSS-in-JS library that allows you to write CSS within your components. It's been around for a minute and has a large community behind it.
+
+Here's a basic example from their [docs](https://styled-components.com/docs/basics):
+
+```js
+// Create a Title component that'll render an <h1> tag with some styles
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+// Create a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+// Use Title and Wrapper like any other React component – except they're styled!
+render(
+  <Wrapper>
+    <Title>
+      Hello World!
+    </Title>
+  </Wrapper>
+);
+```
+
+<div class="flex gap-10 pros-cons">
+  <div>
+  #### Pros:
+    - Encapsulates styles within components, preventing CSS leaks and conflicts
+    - Easy to to do dynamic styling based on props
+    - Popular and actively maintained
+  </div>
+  <div>
+  #### Cons:
+    - Adds extra weight to your bundle as it requires a separate library
+    - Can be slower than traditional stylesheets due to the lack of caching
+  </div>
+</div>
+
+I like having my styles written directly in the component, it keeps things nice and tidy and it makes it easy to find where a style is coming from.
+
+I give it a <span class="rating">★★★★☆</span>
+
+## Vanilla Extract
+
+Vanilla Extract is a CSS-in-JS library that offers type safety, good theming support, and plenty of extensions. It's an exciting alternative to existing solutions like Styled Components and Emotion. Vanilla Extract leverages TypeScript to provide type safety and generates CSS at build time, offering improved performance compared to other CSS-in-JS libraries.
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Zero-runtime cost, as the CSS is extracted at build time and doesn't require any JavaScript to be executed during runtime.
+  - Offers type safety, ensuring that your styles are free from errors and inconsistencies.
+  - Provides a flexible theming system based on CSS variables.
+  - Framework-agnostic, meaning it can be used in any project that supports class names
+</div>
+<div>
+#### Cons:
+  - Less mature and has a smaller community compared to Emotion and Styled Components.
+  - Requires you to write styles in .css.ts files, which may be an inconvenience for some developers formidable.com.
+</div>
+</div>
+
+To get started with Vanilla Extract, you can install the package:
+
+```bash
+npm install @vanilla-extract/css
+```
+
+Then, you can create styles using the style and globalStyle functions:
+
+```jsx
+import { style, globalStyle } from '@vanilla-extract/css';
+
+export const scopedStyle = style({ backgroundColor: '#000000' });
+
+globalStyle('body', { backgroundColor: '#ffffff' });
+```
+
+Theming is an integral part of Vanilla Extract. You can create a theme structure using createThemeContract, and then create multiple themes that adhere to the same structure
+
+## Tailwind CSS
+Tailwind CSS is a utility-first CSS framework that provides a set of predefined classes for styling elements. Tailwind's popularity has exploded over the last couple of months and people seem to have VERY strong opinions about it. Just look at all the comments on this [blog post](https://dev.to/brianboyko/tailwindcss-adds-complexity-does-nothing-3hpn) by Brian Boyko.
+
+Here's a basic example from their [docs](https://tailwindcss.com/docs):
+
+```jsx
+<div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+  <div class="shrink-0">
+    <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+  </div>
+  <div>
+    <div class="text-xl font-medium text-black">ChitChat</div>
+    <p class="text-slate-500">You have a new message!</p>
+  </div>
+</div>
+```
+
+I've been using Tailwind a lot recently in my side projects and am growing to love it more and more, heck I'm currently using it on this site.
+
+I give it a <span class="rating">★★★★☆</span>
+
+<div class="flex gap-10 pros-cons">
+  <div>
+  #### Pros:
+    - Highly customizable and easy to extend
+    - Promotes consistency by providing a set of predefined (and extremely well thought) styles
+    - Once you get the hang of it you can rapidly style your app, great for prototyping
+  </div>	
+  <div>
+  #### Cons:
+    - Can lead to super messy markup due to the extensive use of utility classes, it's not uncommon to see a single element with 10+ classes
+    - Requires learning a new set of class names and conventions
+  </div>
+</div>
+
+## UnoCSS
+
+UnoCSS is a new utility-first CSS framework that aims to provide an alternative to Tailwind CSS. It is designed to be minimalistic, fast, and extensible.
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Lightweight and fast.
+  - Provides a set of basic utility classes for common styling needs.
+  - Supports customization and extensibility.
+</div>
+<div>
+#### Cons:
+  - Less mature and has a smaller community compared to Tailwind CSS.
+  - Requires learning a new set of class names and conventions.
+</div>
+</div>
+
+## CSS Modules
+
+
+CSS Modules is a technique that allows you to write CSS in separate files but scope the styles to individual components.
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Encapsulates styles within components, preventing CSS leaks and conflicts.
+  - Supports local and global styles.
+  - No need for additional libraries, as it is supported by popular bundlers like Webpack.
+</div>
+<div>
+#### Cons:
+  - Requires a build step to generate scoped class names.
+  - Can be less flexible compared to CSS-in-JS solutions.
+</div>
+</div>
+
+
+## Emotion
+
+Emotion is a flexible and high-performance CSS-in-JS library that allows you to write CSS styles with JavaScript. It supports both string and object styles and is available in two primary methods: framework-agnostic and for use with React emotion.sh.
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Offers a powerful and flexible API for styling components, including support for CSS-in-JS and server-side rendering
+  - Smaller size and faster performance than some other CSS-in-JS alternatives
+  - Has a strong community of users and a growing ecosystem of plugins and tools
+  - Provides an easily handled object style for writing CSS, making it more developer-friendly
+</div>
+<div>
+#### Cons:
+  - Adds extra weight to your bundle as it requires a separate library
+  - Can be slower than traditional stylesheets due to the lack of caching
+</div>
+</div>
+
+To get started with Emotion in a React project, you can install the necessary packages:
+
+```bash
+npm install @emotion/react @emotion/styled
+```
+
+Then, you can use the `styled` function to create styled components:
+
+```jsx
+import styled from '@emotion/styled';
+
+const Button = styled.button`
+  background-color: blue;
+  color: white;
+  padding: 10px;
+`;
+
+function App() {
+  return <Button>Click me</Button>;
+}
+
+export default App;
+```
+
+## Atomic CSS
+
+Atomic CSS is a methodology where each CSS class represents a single style property and value. This approach promotes reusability of styles and reduces the CSS bundle size. There are several libraries that generate Atomic CSS automatically, enabling developers to write styles in a familiar way while benefiting from Atomic CSS's advantages.
+
+### Compiled
+
+Compiled is a build-time atomic CSS-in-JS library that aims to have feature parity with other libraries while being fully extractable to a static atomic stylesheet. It offers a similar developer experience to other CSS-in-JS libraries while generating atomic CSS css-tricks.com.
+
+GitHub: https://github.com/atlassian-labs/compiled
+
+### Linaria
+
+Linaria is a zero-runtime CSS-in-JS library that extracts static CSS at build time. It generates atomic CSS, increasing reusability and decreasing the final CSS bundle size css-tricks.com.
+
+GitHub: https://github.com/callstack/linaria
+
+### Griffel
+
+Griffel is a CSS-in-JS library that generates atomic CSS. It allows developers to write styles in a monolithic way while outputting atomic CSS, increasing reusability and decreasing the final CSS bundle size css-tricks.com.
+
+GitHub: https://github.com/sapegin/griffel
+
+### Stylex
+Stylex is a CSS-in-JS library developed by Facebook that generates atomic CSS. It's used in the new Facebook website, resulting in a smaller CSS bundle size that scales linearly. One drawback is that it can make the JSX code larger, leading to more JS code to download for framework hydration css-tricks.com.
+
+GitHub: https://github.com/lunaruan/stylex
+
+## Linaria
+
+Linaria is a zero-runtime CSS-in-JS library that extracts static CSS at build time, resulting in smaller bundle sizes and improved performance. It's focused on providing a great developer experience while maintaining an emphasis on performance.
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Zero-runtime cost, as the CSS is extracted at build time and doesn't require any JavaScript to be executed during runtime
+  - Offers a similar API to other popular CSS-in-JS libraries like Emotion and Styled Components
+  - Supports both string and object styles, as well as theming and dynamic styles
+</div>
+<div>
+#### Cons:
+  - Less mature and has a smaller community compared to Emotion and Styled Components
+  - May lack certain features or plugins available in more established libraries
+</div>
+</div>
+
+To get started with Linaria in a React project, you can install the package:
+
+```bash
+npm install linaria
+```
+
+Then, you can use the styled function to create styled components:
+
+```jsx
+import { styled } from 'linaria/react';
+
+const Button = styled.button`
+  background-color: blue;
+  color: white;
+  padding: 10px;
+`;
+
+function App() {
+  return <Button>Click me</Button>;
+}
+
+export default App;
+```
+
+
+## Shadcn UI
+
+Shadcn UI is an accessible and customizable component library that you can copy and paste into your React applications. It provides a set of pre-built components designed to be easy to use and modify. This is a relatively new project and I'm pretty excited about it, I'm going to be using it in my next project and will most likely be writing more about it.
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Offers a collection of accessible and customizable components.
+  - Encourages reusability and consistency across your application.
+  - Open-source and easy to integrate into your project.
+</div>
+<div>
+#### Cons:
+  - Limited to the components provided by the library.
+  - May not cover all the styling needs of your application, requiring additional CSS solutions.
+  - To get started with Shadcn UI, you can create a new Next.js app using their template:
+</div>
+</div>
+
+```bash
+npx create-next-app -e https://github.com/shadcn/next-template
+```
+
+In conclusion, there are various CSS solutions available for styling React applications, each with its own set of benefits and trade-offs. It's essential to consider the specific requirements of your project and your personal preferences when choosing a CSS solution. Whether you prefer traditional CSS approaches like plain CSS and SASS or more modern solutions like CSS-in-JS and component libraries, there's an option out there that will suit your needs.
