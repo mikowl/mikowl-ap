@@ -43,6 +43,9 @@ dependencies:
   satori:
     specifier: ^0.4.8
     version: 0.4.8
+  serverless:
+    specifier: link:@astrojs/vercel/serverless
+    version: link:@astrojs/vercel/serverless
   tailwindcss:
     specifier: ^3.3.1
     version: 3.3.1(postcss@8.4.21)
