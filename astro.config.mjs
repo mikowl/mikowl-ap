@@ -10,6 +10,9 @@ import { SITE } from "./src/config";
 // https://astro.build/config
 export default defineConfig({
 	site: SITE.website,
+	adapter: vercel({
+		analytics: true
+	}),
 	integrations: [
 		mdx({
 			drafts: true,
