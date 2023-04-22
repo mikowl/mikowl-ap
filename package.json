@@ -18,6 +18,7 @@
 		"@astrojs/mdx": "^0.18.4",
 		"@astrojs/react": "^2.1.1",
 		"@astrojs/rss": "^2.3.2",
+		"@astrojs/vercel": "^3.2.4",
 		"@resvg/resvg-js": "^2.4.1",
 		"@types/react-dom": "^18.0.11",
 		"@vercel/analytics": "^1.0.0",
@@ -29,8 +30,9 @@
 		"remark-collapse": "^0.1.2",
 		"remark-toc": "^8.0.1",
 		"satori": "^0.4.8",
-		"serverless": "link:@astrojs/vercel/serverless",
-		"tailwindcss": "^3.3.1"
+		"static": "link:@astrojs/vercel/static",
+		"tailwindcss": "^3.3.1",
+		"vercel": "link:@astrojs/vercel"
 	},
 	"devDependencies": {
 		"@astrojs/sitemap": "^1.2.2",

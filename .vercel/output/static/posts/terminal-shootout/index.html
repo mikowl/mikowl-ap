@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="canonical" href="https://www.mikowl.com/posts/terminal-shootout/">
+		<meta name="generator" content="Astro v2.3.0">
+
+		<!-- Favicon stuff -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1d2232">
+		<meta name="msapplication-TileColor" content="#ffc40d">
+		<meta name="theme-color" content="#ffffff">
+
+		<!-- General Meta Tags -->
+		<title>Terminal Shootout</title>
+		<meta name="title" content="Terminal Shootout">
+		<meta name="description" content="I'm a sucker for trying out new terminal emulators. Here I'll go over some of the pros and cons of the most popular terminals out there">
+		<meta name="author" content="Michael Elias">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:title" content="Terminal Shootout">
+		<meta property="og:description" content="I'm a sucker for trying out new terminal emulators. Here I'll go over some of the pros and cons of the most popular terminals out there">
+		<meta property="og:url" content="https://www.mikowl.com/posts/terminal-shootout/">
+		<meta property="og:image" content="https://www.mikowl.com/Terminal%20Shootout.png">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://www.mikowl.com/posts/terminal-shootout/">
+		<meta property="twitter:title" content="Terminal Shootout">
+		<meta property="twitter:description" content="I'm a sucker for trying out new terminal emulators. Here I'll go over some of the pros and cons of the most popular terminals out there">
+		<meta property="twitter:image" content="https://www.mikowl.com/Terminal%20Shootout.png">
+
+		<!-- Google Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+		
+
+		<script src="/toggle-theme.js"></script>
+	<link rel="stylesheet" href="/_astro/about.46c31b78.css" />
+<link rel="stylesheet" href="/_astro/about.ace71dfc.css" />
+<link rel="stylesheet" href="/_astro/_slug_.eadb0386.css" />
+<link rel="stylesheet" href="/_astro/_slug_.d279cf0d.css" />
+<link rel="stylesheet" href="/_astro/_slug_.b9446238.css" />
+<link rel="stylesheet" href="/_astro/_slug_.ce5ea344.css" /><script type="module">const e=document.querySelector(".hamburger-menu"),n=document.querySelector("#menu-items")?.classList,t=document.querySelector(".icon-container")?.classList,o=document.querySelector("#first-line")?.classList,a=document.querySelector("#second-line ")?.classList,s=document.querySelector("#third-line")?.classList;e?.addEventListener("click",function(){e?.getAttribute("aria-expanded")==="false"?(e?.setAttribute("aria-expanded","true"),e?.setAttribute("aria-label","Close Menu"),n?.remove("display-none"),t?.remove("flex"),t?.add("relative"),o?.add("rotate-45","absolute","bottom-1/2"),s?.add("display-none"),a?.add("!w-full","-rotate-45","absolute","bottom-1/2")):(e?.setAttribute("aria-expanded","false"),e?.setAttribute("aria-label","Open Menu"),n?.add("display-none"),t?.add("flex"),t?.remove("relative"),o?.remove("rotate-45","absolute","bottom-1/2"),s?.remove("display-none"),a?.remove("!w-full","-rotate-45","absolute","bottom-1/2"))});
+</script>
+<script type="module" src="/_astro/page.f978079d.js"></script></head>
+	<body>
+		
+	<header class="h-40 astro-3EF6KSR2">
+	<a id="skip-to-content" href="#main-content" class="astro-3EF6KSR2">Skip to content</a>
+	<!-- <div class="nav-container">
+		<div class="top-nav-wrap">
+			<nav id="nav-menu">
+				<button
+					class="hamburger-menu focus-outline"
+					aria-label="Open Menu"
+					aria-expanded="false"
+					aria-controls="menu-items"
+				>
+					<div class="flex icon-container">
+						<div id="first-line"></div>
+						<div id="second-line"></div>
+						<div id="third-line"></div>
+					</div>
+				</button>
+				<ul id="menu-items" class="display-none sm:flex">
+					<li>
+						<LinkButton
+							href="/search"
+							className={`focus-outline p-3 sm:p-1 ${
+								activeNav === "search" ? "active" : ""
+							}`}
+							ariaLabel="search"
+							title="Search"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="scale-125 sm:scale-100"
+								><path
+									d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"
+								></path>
+							</svg>
+						</LinkButton>
+					</li>
+					<li>
+						{
+							SITE.lightAndDarkMode && (
+								<button
+									id="theme-btn"
+									class="focus-outline"
+									title="Toggles light & dark"
+									aria-label="auto"
+									aria-live="polite"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" id="moon-svg">
+										<path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z" />
+									</svg>
+									<svg xmlns="http://www.w3.org/2000/svg" id="sun-svg">
+										<path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z" />
+									</svg>
+								</button>
+							)
+						}
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div> -->
+	<a href="/" class="logo astro-3EF6KSR2">
+		<img class="mx-auto -mt-12 w-36 astro-3EF6KSR2" src="/assets/mikowllogo.png" alt="Mikowl Logo" width="944" height="955">
+	</a>
+</header>
+	<div class="flex justify-start w-full max-w-4xl px-2 mx-auto astro-VJ4TPSPI">
+		<button class="flex mt-8 mb-2 focus-outline hover:opacity-75 astro-VJ4TPSPI" onclick="history.back()">
+			<svg xmlns="http://www.w3.org/2000/svg" class="astro-VJ4TPSPI"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" class="astro-VJ4TPSPI"></path>
+			</svg><span class="astro-VJ4TPSPI">Go back</span>
+		</button>
+	</div>
+	<main id="main-content" class="terminal-shootout astro-VJ4TPSPI">
+		<h1 class="post-title astro-VJ4TPSPI">Terminal Shootout</h1>
+		<div class="flex items-center space-x-2 opacity-80 my-2 astro-VJ4TPSPI"><svg xmlns="http://www.w3.org/2000/svg" class="scale-100 inline-block h-6 w-6 fill-skin-base" aria-hidden="true"><path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg><span class="sr-only">Posted on:</span><span class="italic text-base">April 10, 2023</span></div>
+		<article id="article" role="article" class="max-w-4xl mx-auto mt-8 prose astro-VJ4TPSPI">
+			<p>I’m a sucker for trying out new terminal emulators. They all pretty much do the same thing and to be honest the out of the box macOs is totes fine but I’m a nerd and collect terminals like pokemon cards. Here I’ll go over some of the pros and cons of the most popular terminals out there.</p>
+<h2 id="hyper">Hyper</h2>
+<img src="/img/hyper.png" alt="Hyper terminal" class="w-full"/>
+<p><a href="https://hyper.is/">Hyper</a> is a fresh and flashy terminal built on web technologies like Electron, React, and Redux. It’s highly extensible, allowing you to customize and extend its functionality with plugins.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros">Pros:</h4><ul>
+<li>Very easy to customize</li>
+<li>Looks pretty pretty out of the box</li>
+</ul></div><div><h4 id="cons">Cons:</h4><ul>
+<li>Performance can be sluggish (although it’s gotten better in v3)</li>
+</ul></div></div>
+<h2 id="iterm2">iTerm2</h2>
+<img src="/img/iterm.png" alt="iTerm2 terminal" class="w-full"/>
+<p><a href="https://iterm2.com/">iTerm2</a> is a tried and true macOS terminal emulator, known for its extensive features and customization options. I used iTerm2 for many many years and never had any issues with it.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros-1">Pros:</h4><ul>
+<li>Built-in support for tabs, split panes, and more</li>
+<li>Mature and well-maintained</li>
+</ul></div><div><h4 id="cons-1">Cons:</h4><ul>
+<li>macOS only</li>
+<li>Probably your dad’s terminal</li>
+</ul></div></div>
+<h2 id="alacritty">Alacritty</h2>
+<img src="/img/alacritty.png" alt="Alacritty terminal" class="w-full rounded-md max-w-[96%] mx-auto shadow-lg"/>
+<p><a href="https://alacritty.org/">Alacritty</a> is a <span><style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="M4mJN" component-url="/_astro/Tooltip.b16c5f9c.js" component-export="default" renderer-url="/_astro/client.38423ee9.js" props="{&quot;content&quot;:[0,&quot;lol it really is tho 🚀&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;Tooltip&quot;,&quot;value&quot;:true}" await-children=""><span class="tooltip-container" tabindex="0" aria-describedby="tooltip-6"><astro-slot>blazingly-fast</astro-slot></span></astro-island></span>, GPU-accelerated terminal emulator that values simplicity and performance above all else. It has somewhat of a cult following, kinda like the arch linux of terminal emulators. Like if you ask “Which terminal do you use?” on twitter, the alacritty folks pop out of the woodworks.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros-2">Pros:</h4><ul>
+<li>Probably the fastest terminal in this list</li>
+<li>Cross-platform</li>
+</ul></div><div><h4 id="cons-2">Cons:</h4><ul>
+<li>Limited customization and features compared to other terminals</li>
+<li>Emoji and ligature support is not great</li>
+</ul></div></div>
+<h2 id="kitty">Kitty</h2>
+<img src="/img/kitty.png" alt="Kitty terminal" class="w-full rounded-md max-w-[96%] mx-auto shadow-lg"/>
+<p><a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> is another GPU-accelerated terminal emulator that aims to strike a balance between performance and features. This has been my personal favorite terminal for a while now, it’s almost as fast as alacritty and really just looked super nice out of the box without having to fuss with it too much.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros-3">Pros:</h4><ul>
+<li>Fast and efficient</li>
+<li>Rich in features, such as ligature support and image rendering</li>
+</ul></div><div><h4 id="cons-3">Cons:</h4><ul>
+<li>Tad more complex configuration compared to Alacritty</li>
+<li>Logo is lame <a href="https://sw.kovidgoyal.net/kitty/faq/#i-do-not-like-the-kitty-icon">but you can change it</a></li>
+<li>Copying text can be wonky sometimes</li>
+</ul></div></div>
+<h2 id="tabby">Tabby</h2>
+<img src="/img/tabby.png" alt="Tabby terminal" class="w-full"/>
+<p><a href="https://tabby.sh/">Tabby</a> is a modern and extensible terminal emulator that emphasizes user experience and productivity. It offers some cool features like “Smart tabs” that can detect progress and notify when a process is done. It also has a built in quake mode which is rad.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros-4">Pros:</h4><ul>
+<li>Beautiful and user-friendly interface</li>
+<li>Extensible with plugins</li>
+</ul></div><div><h4 id="cons-4">Cons:</h4><ul>
+<li>Performance might not be as fast as GPU-accelerated terminals</li>
+</ul></div></div>
+<h2 id="warp">Warp</h2>
+<img src="/img/warp.png" alt="Warp terminal" class="w-full"/>
+<p><a href="https://www.warp.dev/">Warp</a> is a cloud-powered terminal emulator that enables real-time collaboration and seamless integration with cloud services. They state “Writing code in your terminal shouldn’t feel like 1978” but part of my favorite thing about terminals are the 1978 vibes. I can’t be alone in this right? Anyways, it’s cool and there are a shitton of features but it’s not for me.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros-5">Pros:</h4><ul>
+<li>Fully native, built with Rust</li>
+<li>Real-time collaboration features</li>
+<li>Tons of features</li>
+</ul></div><div><h4 id="cons-5">Cons:</h4><ul>
+<li>Reliance on the cloud can raise security and privacy concerns</li>
+<li>Almost too many features</li>
+<li>Not open source</li>
+<li>macOs only</li>
+</ul></div></div>
+<h2 id="terminal-macos">Terminal (macOS)</h2>
+<img src="/img/terminal.png" alt="macOS terminal" class="w-full"/>
+<p>The macOS default Terminal is a reliable and straightforward terminal emulator that gets the job done. I hadn’t opened this up in forever, aw I kinda miss it. I still have a tmux session running, which I really only used for split screens so stopped using it since kitty has built in split screen functionality.</p>
+<div class="pros-cons flex gap-10"><div><h4 id="pros-6">Pros:</h4><ul>
+<li>Pre-installed on macOS</li>
+<li>Simple and reliable</li>
+</ul></div><div><h4 id="cons-6">Cons:</h4><ul>
+<li>Limited features and customization options compared to other terminals</li>
+</ul></div></div>
+<p>Dangggg did you know there were so many terminal emulators out there? I think I’ll be sticking with Kitty, the <a href="https://sw.kovidgoyal.net/kitty/layouts/#the-tall-layout">layouts</a> are great, it’s fast, and it’s pretty. Which one is your favorite? Let me know on <a href="https://twitter.com/mikowl">twitter</a>.</p>
+		</article>
+		<ul class="tags-container astro-VJ4TPSPI">
+			<li class="inline-block my-1 underline-offset-4 astro-BLWJYJPT">
+	<a href="/tags/vscode" class="text-sm pr-2 group astro-BLWJYJPT">
+		<svg xmlns="http://www.w3.org/2000/svg" class=" scale-75 astro-BLWJYJPT"><path d="M16.018 3.815 15.232 8h-4.966l.716-3.815-1.964-.37L8.232 8H4v2h3.857l-.751 4H3v2h3.731l-.714 3.805 1.965.369L8.766 16h4.966l-.714 3.805 1.965.369.783-4.174H20v-2h-3.859l.751-4H21V8h-3.733l.716-3.815-1.965-.37zM14.106 14H9.141l.751-4h4.966l-.752 4z" class="astro-BLWJYJPT"></path>
+		</svg>
+		&nbsp;<span class="astro-BLWJYJPT">vscode</span>
+	</a>
+</li><li class="inline-block my-1 underline-offset-4 astro-BLWJYJPT">
+	<a href="/tags/tools" class="text-sm pr-2 group astro-BLWJYJPT">
+		<svg xmlns="http://www.w3.org/2000/svg" class=" scale-75 astro-BLWJYJPT"><path d="M16.018 3.815 15.232 8h-4.966l.716-3.815-1.964-.37L8.232 8H4v2h3.857l-.751 4H3v2h3.731l-.714 3.805 1.965.369L8.766 16h4.966l-.714 3.805 1.965.369.783-4.174H20v-2h-3.859l.751-4H21V8h-3.733l.716-3.815-1.965-.37zM14.106 14H9.141l.751-4h4.966l-.752 4z" class="astro-BLWJYJPT"></path>
+		</svg>
+		&nbsp;<span class="astro-BLWJYJPT">tools</span>
+	</a>
+</li>
+		</ul>
+		<div class="text-center astro-VJ4TPSPI">
+			<a type="button" href="/posts" tabindex="0" class="no-underline astro-VJ4TPSPI">
+				More Posts
+				<svg xmlns="http://www.w3.org/2000/svg" class="astro-J7PV25F6 astro-VJ4TPSPI"><path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" class="astro-J7PV25F6 astro-VJ4TPSPI"></path>
+				</svg>
+</a>
+		</div>
+		<!-- Next blog post -->
+
+	</main>
+	<footer class="mt-auto astro-SZ7XMLTE">
+	<div class="max-w-4xl mx-auto px-0">
+	<hr class="border-skin-line" aria-hidden="true">
+</div>
+	<div class="footer-wrapper astro-SZ7XMLTE">
+		<div class="social-icons flex astro-UPU6FZXR">
+	<a type="button" href="https://github.com/mikowl" tabindex="0" class="group link-button astro-UPU6FZXR astro-5EUNQZKT" title=" Mikowl on Github">
+	
+				<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path
+      d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+    ></path>
+  </svg>
+			
+</a><a type="button" href="https://www.linkedin.com/in/michael-elias-047b2578/" tabindex="0" class="group link-button astro-UPU6FZXR astro-5EUNQZKT" title="Mikowl on LinkedIn">
+	
+				<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+    <line x1="8" y1="11" x2="8" y2="16"></line>
+    <line x1="8" y1="8" x2="8" y2="8.01"></line>
+    <line x1="12" y1="16" x2="12" y2="11"></line>
+    <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+  </svg>
+			
+</a><a type="button" href="mailto:michael@mikowl.com" tabindex="0" class="group link-button astro-UPU6FZXR astro-5EUNQZKT" title="Send an email to Mikowl">
+	
+				<svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon-tabler"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+      <polyline points="3 7 12 13 21 7"></polyline>
+    </svg>
+			
+</a><a type="button" href="https://twitter.com/mikowl" tabindex="0" class="group link-button astro-UPU6FZXR astro-5EUNQZKT" title="Mikowl on Twitter">
+	
+				<svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon-tabler"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
+    </svg>
+			
+</a>
+</div>
+		<div class="copyright-wrapper astro-SZ7XMLTE">
+			<span class="astro-SZ7XMLTE">&#169; 2023 Mikowl Worldwide Incorporated Global Industries&trade;</span>
+			<!-- <span class="separator">&nbsp;|&nbsp;</span> -->
+			<!-- <span>You ain't tracked or anything luv u bye</span> -->
+		</div>
+	</div>
+</footer>
+
+	</body></html>
