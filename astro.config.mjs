@@ -11,7 +11,7 @@ import { SITE } from "./src/config";
 // https://astro.build/config
 export default defineConfig({
 	site: SITE.website,
-	output: 'server',
+	output: "dist",
 	adapter: vercel({
 		analytics: true
 	}),
