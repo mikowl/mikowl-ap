@@ -1,0 +1,76 @@
+---
+author: Michael Elias
+pubDatetime: 2023-04-01
+title: Astro and mdx and components in markdown
+postSlug: astro-and-mdx
+postThumb: /img/thumbs/astro.jpg
+featured: false
+tags:
+  - astro
+  - mdx
+  - react
+  - markdown
+description: I was all like whattt and they were all like nooooo way and I was like yessss and they were all like bruhhhhhh and I was like...
+---
+
+import Dadjoke from '../../components/blog/Dadjoke'
+import DumbButton from '../../components/blog/DumbButton'
+
+<img src="/astro.svg" alt="Astro" class="float-right w-1/4 m-4" />
+
+I had an old blog written in [Jekyll](https://jekyllrb.com/) that I started in 2013 but it hadn't been updated in an embarassingly long time so I decided to start so fresh and so clean clean. Here we are, a new website built with [Astro](https://astro.build/). Unless you've been living under a rock (or if you're not a web dev) you've probably heard of it.
+
+One of the coolest things it brings to the table is it's "Component Islands" architecture, so like think of the various components your app might have: header, navigation, sidebar, footer, etc. Some of these components could be mostly static like your footer but you may also have something like an image carousel component that's interactive. In astro you can mix and match your UI framework, hypothetically you could have a header written in [Svelte](https://svelte.dev/), a sidebar written in [Vue](https://vuejs.org/), and an image carousel written in [React](https://react.dev/). Although I'm not quite sure why anyone in their sane mind would do that. Anyways, the biggest benefit of astro islands is performance, most of your website is converted to fast static html and the javascript is only loaded for the individual components that actually need it.
+
+My favorite, and newish part of Astro is the ability to use [mdx](https://mdxjs.com/) files which is like markdown but with jsx, so if I want I can build little components and slap them in my blog post, for example:
+
+<Dadjoke client:visible />
+
+or like make this super fun game where the goal is to click the button 10 times:
+
+<DumbButton client:visible />
+
+That's pretty awesome, right? Astro gives you multiple [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives):
+
+  - `client:load` load and hydrate the component js immediately on page load
+  - `client:idle`  load and hydrate the component js once the page is done with its initial load 
+  - `client:visible` load and hydrate the component js once the component has entered the user’s viewport
+  - `client:media` loads and hydrates the component js once a certain CSS media query is met
+  - `client:only` like load except skips html server-rendering completely
+
+For example, with my Dadjoke component, I set it to `client:visible` so the javascript doesn't load until the component reaches the user's viewport.
+
+```js filename="Dadjoke.tsx"
+<Dadjoke client:visible />
+```
+
+and you're probably wanting my amazing Dadjoke component, so here you go:
+
+```js filename="Dadjoke.tsx"
+import { useState } from "react";
+
+const Dadjoke = () => {
+  const [joke, setJoke] = useState<string>("");
+
+  const generateDadJoke = () => {
+    fetch("https://icanhazdadjoke.com/", {
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then(res => res.json())
+      .then(data => setJoke(data.joke));
+  };
+
+  return (
+    <>
+      <button className="btn" onClick={generateDadJoke}>
+        {joke ? "👴 Generate Another Dad Joke 🤪" : "👴 Generate Dad Joke 👴"}
+      </button>
+      {joke && <blockquote>{joke}</blockquote>}
+    </>
+  );
+};
+
+export default Dadjoke;
+```

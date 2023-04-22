@@ -1,0 +1,1 @@
+import{r as e}from"./index.45a47ed6.js";let t=0,u=(r="id")=>e.useRef(`${r}-${++t}`).current;export{u};
