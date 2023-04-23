@@ -90,6 +90,7 @@
 		background-image: linear-gradient(to right,#a176c8 10%,#759beb 30%,#65beb3 60%,#70db96 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+		-webkit-font-smoothing: auto;
 	}
 	h2, .h2 {
 		@apply mt-20 mb-6 text-2xl font-bold text-skin-base;
