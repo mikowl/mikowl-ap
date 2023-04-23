@@ -13,7 +13,13 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 		<li className="my-10 flex flex-wrap sm:flex-nowrap items-center gap-8">
 			{postThumb ? (
 				<div className="post-thumb basis-full sm:basis-1/4">
-					<img src={postThumb} className="rounded-md max-w-sm w-full" />
+					<a href={href}>
+						<img
+							src={postThumb}
+							className="rounded-md max-w-sm w-full"
+							alt={title}
+						/>
+					</a>
 				</div>
 			) : (
 				<div></div>

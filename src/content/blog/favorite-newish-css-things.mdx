@@ -34,7 +34,7 @@ The traditional approach of using a single border radius value can result in imp
 
 I saved this diagram from twitter a while back (If you know who originally made it please let me know so I can credit them). It's a nice visual of the formula for calculating the perfect inner border radius.
 
-<img src="/img/borderradius.png" />
+<img src="/img/borderradius.png" alt="border radius example" />
 
 and here's how we can implement it in CSS:
 
@@ -54,13 +54,13 @@ and here's how we can implement it in CSS:
 
 <div class="flex items-center">
   <div class="card-outer">
-    <img src="https://placekitten.com/250/300" class="card-inner" />
+    <img src="https://placekitten.com/250/300" alt="a kitty" class="card-inner" />
   </div>
 
   <strong class="px-10">vs:</strong>
 
   <div class="rounded-[20px] radius-20 inline-block p-[10px] bg-[#73d9b0]">
-    <img src="https://placekitten.com/250/300" class="rounded-[20px]" />
+    <img src="https://placekitten.com/250/300" alt="another kitty" class="rounded-[20px]" />
   </div>
 </div>
 
