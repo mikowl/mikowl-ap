@@ -28,6 +28,7 @@
 		"github-slugger": "^2.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"remark-code-titles": "^0.1.2",
 		"remark-collapse": "^0.1.2",
 		"remark-toc": "^8.0.1",
 		"satori": "^0.4.14",

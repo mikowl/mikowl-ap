@@ -7,6 +7,7 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
 import { SITE } from "./src/config";
+import remarkCodeTitles from "remark-code-titles";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
 	],
 	markdown: {
 		remarkPlugins: [
+			remarkCodeTitles,
 			remarkToc,
 			[
 				remarkCollapse,
