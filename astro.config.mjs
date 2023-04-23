@@ -5,6 +5,7 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
+import image from "@astrojs/image";
 import { SITE } from "./src/config";
 
 // https://astro.build/config
@@ -21,6 +22,7 @@ export default defineConfig({
 		}),
 		react(),
 		sitemap(),
+		image(),
 	],
 	markdown: {
 		remarkPlugins: [

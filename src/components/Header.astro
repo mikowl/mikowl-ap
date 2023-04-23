@@ -1,9 +1,10 @@
 ---
 import { LOGO_IMAGE, SITE } from "@config";
+import { Image } from '@astrojs/image/components';
 // import Hr from "./Hr.astro";
 // import LinkButton from "./LinkButton.astro";
 
-import logoPNG from "/assets/mikowllogo.png";
+import logoPNG from "../assets/mikowllogo.png";
 
 export interface Props {
 	activeNav?: "posts" | "tags" | "about" | "search";
@@ -75,9 +76,10 @@ export interface Props {
 	<a href="/" class="logo">
 		{
 			LOGO_IMAGE.enable ? (
-				<img
+				<Image
 					class="mx-auto -mt-12 w-36"
 					src={logoPNG}
+					format="png"
 					alt="Mikowl Logo"
 					width={LOGO_IMAGE.width}
 					height={LOGO_IMAGE.height}
