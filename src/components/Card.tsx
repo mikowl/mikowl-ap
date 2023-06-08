@@ -34,7 +34,12 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 							{title}
 						</h2>
 					) : (
-						<h3 className="text-lg font-medium hover:underline">{title}</h3>
+						<h3
+							style={{ textDecorationColor: "rgb(59 130 246 / 0.15)" }}
+							className="text-lg font-medium underline-offset-4 hover:underline decoration-wavy decoration-inherit inline-block text-transparent bg-[linear-gradient(to_right,#4eade8_0%,#65beb3_60%,#4eade8_100%)] bg-clip-text subpixel-antialiased"
+						>
+							{title}
+						</h3>
 					)}
 				</a>
 				<Datetime datetime={pubDatetime} />
