@@ -20,17 +20,19 @@ import Tooltip from "../../components/Tooltip";
 import Accordion from "../../components/Accordion";
 import RandomQuokka from "../../components/blog/RandomQuokka";
 
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
 After installing the [Webpack Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) on a few of my projects I was blown away how heavy some of these, seemingly simple, packages can be. So before immediately reaching for an npm package try to see if you can build the feature yourself. You may find the end result to be well worth your time, ending with a component that is not a only a fraction of the size but also tailored to fit your specific needs. Let's build a few components together!
 
 ## Tooltip Component
 
-I needed a simple tooltip component so I reached for [react-tooltip](https://www.npmjs.com/package/react-tooltip). I ran into some issues with it though in Astro/mdx files and also I really only need a fraction of it's features. It's pretty gnarly that a simple tooltip package is like 45kb minified. So anyways I decided to build my own. I started by looking at the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) for tooltips.  
+I needed a simple tooltip component so I reached for [react-tooltip](https://www.npmjs.com/package/react-tooltip). I ran into some issues with it though in Astro/mdx files and also I really only need a fraction of it's features. It's pretty gnarly that a simple tooltip package is like 45kb minified. So anyways I decided to build my own. I started by looking at the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) for tooltips.
 
 <aside>
-<Icon name="ion:information-circle-outline" />
-General note, if you're going to be building your own component/UI I highly recommend checking out [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/). It's a great resource for ensuring your UI is accessible and to follow best practices.
+	<Icon name="ion:information-circle-outline" />
+	General note, if you're going to be building your own component/UI I highly recommend
+	checking out [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/).
+	It's a great resource for ensuring your UI is accessible and to follow best practices.
 </aside>
 
 ```jsx
@@ -38,48 +40,48 @@ import React, { useState } from "react";
 import useUniqueId from "../utils/useUniqueId";
 
 type TooltipPros = {
-  content: string;
-  children: React.ReactElement;
+	content: string,
+	children: React.ReactElement,
 };
 
 const Tooltip: React.FC<TooltipPros> = ({ content, children }) => {
-  const [show, setShow] = useState(false);
-  const tooltipId = useUniqueId("tooltip");
+	const [show, setShow] = useState(false);
+	const tooltipId = useUniqueId("tooltip");
 
-  const handleMouseEnter = () => {
-    setShow(true);
-  };
+	const handleMouseEnter = () => {
+		setShow(true);
+	};
 
-  const handleMouseLeave = () => {
-    setShow(false);
-  };
+	const handleMouseLeave = () => {
+		setShow(false);
+	};
 
-  const handleFocus = () => {
-    setShow(true);
-  };
+	const handleFocus = () => {
+		setShow(true);
+	};
 
-  const handleBlur = () => {
-    setShow(false);
-  };
+	const handleBlur = () => {
+		setShow(false);
+	};
 
-  return (
-    <span
-      className="tooltip-container"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      tabIndex={0}
-      aria-describedby={tooltipId}
-    >
-      {children}
-      {show && (
-        <span className="tooltip-content" id={tooltipId} role="tooltip">
-          {content}
-        </span>
-      )}
-    </span>
-  );
+	return (
+		<span
+			className="tooltip-container"
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+			onFocus={handleFocus}
+			onBlur={handleBlur}
+			tabIndex={0}
+			aria-describedby={tooltipId}
+		>
+			{children}
+			{show && (
+				<span className="tooltip-content" id={tooltipId} role="tooltip">
+					{content}
+				</span>
+			)}
+		</span>
+	);
 };
 
 export default Tooltip;
@@ -92,30 +94,30 @@ and here's the css:
 ```css
 /* how you want your tooltip link to look */
 .tooltip-container {
-  position: relative;
-  display: inline-block;
-  cursor: default;
-  color: var(--purple-light);
+	position: relative;
+	display: inline-block;
+	cursor: default;
+	color: var(--purple-light);
 }
 
 .tooltip-content {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 5px 7px;
-  background-color: rgb(0 0 0 / 50%);
-  color: #fff;
-  font-size: 0.875rem;
-  border-radius: 4px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 5px 7px;
+	background-color: rgb(0 0 0 / 50%);
+	color: #fff;
+	font-size: 0.875rem;
+	border-radius: 4px;
+	white-space: nowrap;
+	pointer-events: none;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
 }
 
 .tooltip-container:hover .tooltip-content {
-  opacity: 1;
+	opacity: 1;
 }
 ```
 
@@ -136,39 +138,39 @@ import { useState } from "react";
 import useUniqueId from "../utils/useUniqueId";
 
 const Accordion = ({
-  heading,
-  content,
+	heading,
+	content,
 }: {
-  heading: string;
-  content: string;
+	heading: string,
+	content: string,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-  const panelId = useUniqueId("accordion");
+	const [isActive, setIsActive] = useState(false);
+	const panelId = useUniqueId("accordion");
 
-  return (
-    <div className="accordion">
-      <h3>
-        <button
-          id={panelId}
-          aria-controls={panelId}
-          aria-expanded={isActive}
-          onClick={() => setIsActive(!isActive)}
-          className="accordion-toggle"
-        >
-          {heading}
-          <i className={`chevron-down ${isActive ? "open" : ""}`} />
-        </button>
-      </h3>
-      <p
-        id={panelId}
-        role="region"
-        aria-labelledby={panelId}
-        className={`accordion-content ${isActive ? "active" : ""}`}
-      >
-        {content}
-      </p>
-    </div>
-  );
+	return (
+		<div className="accordion">
+			<h3>
+				<button
+					id={panelId}
+					aria-controls={panelId}
+					aria-expanded={isActive}
+					onClick={() => setIsActive(!isActive)}
+					className="accordion-toggle"
+				>
+					{heading}
+					<i className={`chevron-down ${isActive ? "open" : ""}`} />
+				</button>
+			</h3>
+			<p
+				id={panelId}
+				role="region"
+				aria-labelledby={panelId}
+				className={`accordion-content ${isActive ? "active" : ""}`}
+			>
+				{content}
+			</p>
+		</div>
+	);
 };
 
 export default Accordion;
@@ -178,61 +180,66 @@ and the css:
 
 ```css
 .accordion-toggle {
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  background: rgba(0 0 0 / 20%);
-  border-radius: 7px;
-  padding: 8px 15px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 0;
+	background: rgba(0 0 0 / 20%);
+	border-radius: 7px;
+	padding: 8px 15px;
 }
 
 .accordion-content {
-  max-height: 0;
-  opacity: 0;
-  transform: translate(0, -15px);
-  overflow: hidden;
-  transition: all 0.3s ease;
+	max-height: 0;
+	opacity: 0;
+	transform: translate(0, -15px);
+	overflow: hidden;
+	transition: all 0.3s ease;
 }
 .accordion-content.active {
-  opacity: 1;
-  transform: translate(0);
-  max-height: 100rem;
+	opacity: 1;
+	transform: translate(0);
+	max-height: 100rem;
 }
 
 .chevron-down {
-  border: 2px solid transparent;
-  transition: all .3s ease-in-out;
+	border: 2px solid transparent;
+	transition: all 0.3s ease-in-out;
 }
 
 .chevron-down.open {
-  transform: rotate(180deg) translateX(-4px);
+	transform: rotate(180deg) translateX(-4px);
 }
 
 .chevron-down::after {
-  content: '';
-  display: block;
-  box-sizing: border-box;
-  width: var(--chevron-size);
-  height: var(--chevron-size);
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-  transform: rotate(45deg) translateY(-4px);
-  transform-origin: center;
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	width: var(--chevron-size);
+	height: var(--chevron-size);
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	transform: rotate(45deg) translateY(-4px);
+	transform-origin: center;
 }
 ```
 
 ### Usage:
+
 ```js
 <Accordion heading="Heading is here" content="Content is here" />
 ```
 
 And here it is in action:
 
-<Accordion client:load heading="Who's the best guitarist of all time?" content="Tony Iommi 🎸🤘🧙🏻‍♂️⚡️" />
+<Accordion
+	client:load
+	heading="Who's the best guitarist of all time?"
+	content="Tony Iommi 🎸🤘🧙🏻‍♂️⚡️"
+/>
 
 ## Wrapping up
 

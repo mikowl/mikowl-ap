@@ -9,22 +9,22 @@ tags:
   - css
   - tips
   - design
-description: I've been collecting new CSS things I stumble across that are helpful, made my life easier, or are just neat. 
+description: I've been collecting new CSS things I stumble across that are helpful, made my life easier, or are just neat.
 ---
 
-import Tooltip from '../../components/Tooltip';
+import Tooltip from "../../components/Tooltip";
 
 I've been collecting new CSS things I stumble across that are helpful, made my life easier, or are just neat. Here are some of my favorites.
 
 ## CSS clamp()
 
-The `clamp()` function accepts three arguments: a minimum value, a preferred value, and a maximum value. This allows you to fluidly scale a property based on the viewport size, while still maintaining control over the minimum and maximum values. 
+The `clamp()` function accepts three arguments: a minimum value, a preferred value, and a maximum value. This allows you to fluidly scale a property based on the viewport size, while still maintaining control over the minimum and maximum values.
 
 One of my favorite uses of clamp is for font sizes. The first time I used `vw` I was stoked there was finally a way to make text flexible and responsive without the need to make multiple media queries and breakpoints. However it gets super unwieldy on larger and smaller screens. Clamp allows you to tame that shit.
 
 ```css
 h1 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
+	font-size: clamp(1.5rem, 5vw, 3rem);
 }
 ```
 
@@ -40,15 +40,15 @@ and here's how we can implement it in CSS:
 
 ```css
 .card-outer {
-  --radius: 20px;
-  --border: 10px;
-  /* Outer = inner + space between */
-  border-radius: calc(var(--radius) + var(--border));
-  padding: var(--border);
+	--radius: 20px;
+	--border: 10px;
+	/* Outer = inner + space between */
+	border-radius: calc(var(--radius) + var(--border));
+	padding: var(--border);
 }
 
 .card-inner {
-  border-radius: var(--radius);
+	border-radius: var(--radius);
 }
 ```
 
@@ -57,36 +57,36 @@ and here's how we can implement it in CSS:
     <img src="https://placekitten.com/250/300" alt="a kitty" class="card-inner" />
   </div>
 
-  <strong class="px-10">vs:</strong>
+{" "}
+<strong class="px-10">vs:</strong>
 
   <div class="rounded-[20px] radius-20 inline-block p-[10px] bg-[#73d9b0]">
     <img src="https://placekitten.com/250/300" alt="another kitty" class="rounded-[20px]" />
   </div>
 </div>
 
-
 Doesn't the one on the left look so much better?
 
 ## Aspect ratio, object-fit, and mix-blend-mode
 
-I had a project that consisted of creating a grid of images and the images were made up of various sizes and aspect ratios. Setting the aspect ratio with `aspect-ratio` and `object-fit` made it super easy to ensure images were all the same size and didn't have any white backgrounds. Additional tip: if, for example, you have photos of a product against a white background but you're using a different colored background, you can use `mix-blend-mode: color-burn` to get rid of the white background (<i>*note: this will only work on lighter colored backgrounds</i>).
+I had a project that consisted of creating a grid of images and the images were made up of various sizes and aspect ratios. Setting the aspect ratio with `aspect-ratio` and `object-fit` made it super easy to ensure images were all the same size and didn't have any white backgrounds. Additional tip: if, for example, you have photos of a product against a white background but you're using a different colored background, you can use `mix-blend-mode: color-burn` to get rid of the white background (<i>\*note: this will only work on lighter colored backgrounds</i>).
 
 ```css
 /* aspect ratio and object fit for inconsistently sized images */
 .photos img {
-  aspect-ratio: 3/2;
-  object-fit: contain;
-  /* to get rid of white backgrounds: */
-  mix-blend-mode: color-burn;
+	aspect-ratio: 3/2;
+	object-fit: contain;
+	/* to get rid of white backgrounds: */
+	mix-blend-mode: color-burn;
 }
 
 /* for browsers that dont support aspect-ratio: */
 .photos img::before {
-  content: "";
-  display: block;
-  /* for an aspect ratio of 3/2 divide 2/3 * 100 */
-  /* and set that as the padding-top % */
-  padding-top: 66.666%;
+	content: "";
+	display: block;
+	/* for an aspect ratio of 3/2 divide 2/3 * 100 */
+	/* and set that as the padding-top % */
+	padding-top: 66.666%;
 }
 ```
 
@@ -96,17 +96,21 @@ This is super useful for taming long paragraphs of text that you don't have cont
 
 ```css
 p {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 ```
 
 In action:
 
-<blockquote style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">Sometimes we make the process more complicated than we need to. We will never make a journey of a thousand miles by fretting about how long it will take or how hard it will be. We make the journey by taking each day step by step and then repeating it again and again until we reach our destination.</blockquote>
-
+<blockquote style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+	Sometimes we make the process more complicated than we need to. We will never
+	make a journey of a thousand miles by fretting about how long it will take or
+	how hard it will be. We make the journey by taking each day step by step and
+	then repeating it again and again until we reach our destination.
+</blockquote>
 
 ## dvh/svh/lvh units
 
@@ -116,9 +120,9 @@ Here's an example of how to use the new viewport units in CSS:
 
 ```css
 .full-height {
-  height: 100vh; /* for browsers that dont support dvh or svh */
-  height: 100dvh;
-  height: 100svh;
+	height: 100vh; /* for browsers that dont support dvh or svh */
+	height: 100dvh;
+	height: 100svh;
 }
 ```
 
@@ -130,37 +134,42 @@ I discovered this recently and thought it was kinda neat. Chris Coyier recently 
 
 ```css
 .afancylist {
-  list-style: rnbwdots;
+	list-style: rnbwdots;
 }
 
 @counter-style rnbwdots {
-  system: cyclic;
-  symbols: "🔴" "🟠" "🟡" "🟢" "🔵" "🟣";
-  suffix: " ";
+	system: cyclic;
+	symbols: "🔴" "🟠" "🟡" "🟢" "🔵" "🟣";
+	suffix: " ";
 }
 ```
 
 Example:
 
 <ul class="afancylist">
-  <li>List item 1</li>
-  <li>List item 2</li>
-  <li>List item 3</li>
-  <li>List item 4</li>
-  <li>List item 5</li>
-  <li>List item 6</li>
+	<li>List item 1</li>
+	<li>List item 2</li>
+	<li>List item 3</li>
+	<li>List item 4</li>
+	<li>List item 5</li>
+	<li>List item 6</li>
 </ul>
 
 This example is a bit over the top but I mean look how easy it is to make your list bullets anything you want.
 
 ## Backdrop blur
 
-I recall trying to recreate this effect back in the day and it was a real pain in the <span><Tooltip client:visible content="*Ass">a**</Tooltip></span>, now you can simply add <span><Tooltip client:visible content="or tw class 'backdrop-blur-md'">backdrop-filter: blur(12px)</Tooltip></span> to your element to create a slick sort of frosted window effect. I've seen it used a lot recently for like sticky navigation type of deals, heck even the [Tailwind docs](https://tailwindcss.com/docs/installation) have it.
+I recall trying to recreate this effect back in the day and it was a real pain in the <span><Tooltip client:visible content="*Ass">a\*\*</Tooltip></span>, now you can simply add <span><Tooltip client:visible content="or tw class 'backdrop-blur-md'">backdrop-filter: blur(12px)</Tooltip></span> to your element to create a slick sort of frosted window effect. I've seen it used a lot recently for like sticky navigation type of deals, heck even the [Tailwind docs](https://tailwindcss.com/docs/installation) have it.
 
 In action (hover over Mr. Freeman)
 
-<div class="rounded-xl flex items-center group bg-cover h-96 w-96" style="background-image: url('/img/mfhcc.jpg');">
-<div class="opacity-0 transform translate-y-[200%] group-hover:opacity-100 group-hover:translate-y-20 transition duration-300 ease-in backdrop-blur-md text-center group-hover m-6 p-4 font-normal text-xl text-white rounded-l">Morgan Freeman holding cotton candy.</div>
+<div
+	class="group flex h-96 w-96 items-center rounded-xl bg-cover"
+	style="background-image: url('/img/mfhcc.jpg');"
+>
+	<div class="group-hover text-white m-6 translate-y-[200%] transform rounded-l p-4 text-center text-xl font-normal opacity-0 backdrop-blur-md transition duration-300 ease-in group-hover:translate-y-20 group-hover:opacity-100">
+		Morgan Freeman holding cotton candy.
+	</div>
 </div>
 
 ## Share 👍

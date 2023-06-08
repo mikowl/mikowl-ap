@@ -43,7 +43,7 @@ window.onload = () => {
 	});
 
 	// automatically make all external links open in a new tab
-	document.querySelectorAll("a[href^='http']").forEach((link) => {
+	document.querySelectorAll("a[href^='http']").forEach(link => {
 		link.setAttribute("target", "_blank");
 		link.setAttribute("rel", "noopener");
 	});

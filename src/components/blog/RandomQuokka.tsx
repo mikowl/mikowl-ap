@@ -25,7 +25,7 @@ const RandomQuokka = () => {
 			</button>
 			{quokka && (
 				<img
-					className="rounded-md border-color-[#73d9b0] max-h-96 min-h-[24rem] mt-2 transition-all"
+					className="border-color-[#73d9b0] mt-2 max-h-96 min-h-[24rem] rounded-md transition-all"
 					style={{ border: "3px solid #73d9b0" }}
 					src={quokka}
 					alt="Random Quokka"

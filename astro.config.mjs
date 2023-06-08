@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import mdx from '@astrojs/mdx';
+import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import remarkToc from "remark-toc";
@@ -38,7 +38,7 @@ export default defineConfig({
 		],
 		shikiConfig: {
 			theme: "poimandres",
-			langs: ['js', 'ts', 'html', 'css', 'astro'],
+			langs: ["js", "ts", "html", "css", "astro"],
 			wrap: false,
 		},
 		extendDefaultPlugins: true,

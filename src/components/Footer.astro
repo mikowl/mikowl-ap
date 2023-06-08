@@ -1,7 +1,7 @@
 ---
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
-import { Analytics } from '@vercel/analytics/react' ;
+import { Analytics } from "@vercel/analytics/react";
 
 const currentYear = new Date().getFullYear();
 
@@ -17,7 +17,9 @@ const { noMarginTop = false } = Astro.props;
 	<div class="footer-wrapper">
 		<Socials centered />
 		<div class="copyright-wrapper">
-			<span>&#169; {currentYear} Mikowl Worldwide Incorporated Global Industries&trade;</span>
+			<span
+				>&#169; {currentYear} Mikowl Worldwide Incorporated Global Industries&trade;</span
+			>
 			<!-- <span class="separator">&nbsp;|&nbsp;</span> -->
 			<!-- <span>You ain't tracked or anything luv u bye</span> -->
 		</div>

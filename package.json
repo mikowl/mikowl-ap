@@ -45,6 +45,7 @@
 		"astro-icon": "^0.8.1",
 		"eslint": "^8.42.0",
 		"eslint-plugin-astro": "^0.26.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
 		"lint-staged": "^13.2.2",
 		"prettier": "^2.8.8",
 		"prettier-plugin-tailwindcss": "^0.2.8"

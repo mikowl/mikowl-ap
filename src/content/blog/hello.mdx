@@ -13,10 +13,10 @@ tags:
 description: I was all like whattt and they were all like nooooo way and I was like yessss and they were all like bruhhhhhh and I was like...
 ---
 
-import Dadjoke from '../../components/blog/Dadjoke'
-import DumbButton from '../../components/blog/DumbButton'
+import Dadjoke from "../../components/blog/Dadjoke";
+import DumbButton from "../../components/blog/DumbButton";
 
-<img src="/astro.svg" alt="Astro" class="float-right w-1/4 m-4" />
+<img src="/astro.svg" alt="Astro" class="float-right m-4 w-1/4" />
 
 I had an old blog written in [Jekyll](https://jekyllrb.com/) that I started in 2013 but it hadn't been updated in an embarassingly long time so I decided to start so fresh and so clean clean. Here we are, a new website built with [Astro](https://astro.build/). Unless you've been living under a rock (or if you're not a web dev) you've probably heard of it.
 
@@ -32,11 +32,11 @@ or like make this super fun game where the goal is to click the button 10 times:
 
 That's pretty awesome, right? Astro gives you multiple [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives):
 
-  - `client:load` load and hydrate the component js immediately on page load
-  - `client:idle`  load and hydrate the component js once the page is done with its initial load 
-  - `client:visible` load and hydrate the component js once the component has entered the user’s viewport
-  - `client:media` loads and hydrates the component js once a certain CSS media query is met
-  - `client:only` like load except skips html server-rendering completely
+- `client:load` load and hydrate the component js immediately on page load
+- `client:idle` load and hydrate the component js once the page is done with its initial load
+- `client:visible` load and hydrate the component js once the component has entered the user’s viewport
+- `client:media` loads and hydrates the component js once a certain CSS media query is met
+- `client:only` like load except skips html server-rendering completely
 
 For example, with my Dadjoke component, I set it to `client:visible` so the javascript doesn't load until the component reaches the user's viewport.
 
@@ -50,26 +50,26 @@ and you're probably wanting my amazing Dadjoke component, so here you go:
 import { useState } from "react";
 
 const Dadjoke = () => {
-  const [joke, setJoke] = useState<string>("");
+	const [joke, setJoke] = useState < string > "";
 
-  const generateDadJoke = () => {
-    fetch("https://icanhazdadjoke.com/", {
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then(res => res.json())
-      .then(data => setJoke(data.joke));
-  };
+	const generateDadJoke = () => {
+		fetch("https://icanhazdadjoke.com/", {
+			headers: {
+				Accept: "application/json",
+			},
+		})
+			.then(res => res.json())
+			.then(data => setJoke(data.joke));
+	};
 
-  return (
-    <>
-      <button className="btn" onClick={generateDadJoke}>
-        {joke ? "👴 Generate Another Dad Joke 🤪" : "👴 Generate Dad Joke 👴"}
-      </button>
-      {joke && <blockquote>{joke}</blockquote>}
-    </>
-  );
+	return (
+		<>
+			<button className="btn" onClick={generateDadJoke}>
+				{joke ? "👴 Generate Another Dad Joke 🤪" : "👴 Generate Dad Joke 👴"}
+			</button>
+			{joke && <blockquote>{joke}</blockquote>}
+		</>
+	);
 };
 
 export default Dadjoke;

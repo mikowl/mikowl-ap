@@ -19,7 +19,7 @@ export default function Datetime({ datetime, size = "sm", className }: Props) {
 			</svg>
 			<span className="sr-only">Posted on:</span>
 			<span
-				className={`italic mt-2 ${size === "sm" ? "text-sm" : "text-base"}`}
+				className={`mt-2 italic ${size === "sm" ? "text-sm" : "text-base"}`}
 			>
 				<FormattedDatetime datetime={datetime} />
 			</span>
