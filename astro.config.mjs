@@ -5,7 +5,6 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-import image from "@astrojs/image";
 import { SITE } from "./src/config";
 import remarkCodeTitles from "remark-code-titles";
 
@@ -21,9 +20,10 @@ export default defineConfig({
 				applyBaseStyles: false,
 			},
 		}),
-		react(),
+		react({
+			experimentalReactChildren: true,
+		}),
 		sitemap(),
-		image(),
 	],
 	markdown: {
 		remarkPlugins: [

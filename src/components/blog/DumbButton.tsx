@@ -17,8 +17,13 @@ const DumbButton = () => {
 			return;
 		}
 		btnRef.current.style.backgroundColor = generateRandomHexColor();
-		const screenWidth = window.innerWidth - 240;
-		const randomX = Math.floor(Math.random() * screenWidth);
+		const screenWidth = window.innerWidth;
+		const buttonWidth = btnRef.current.clientWidth;
+		let randomX = Math.floor(Math.random() * screenWidth);
+		// prevent from going off screen
+		if (randomX > screenWidth - buttonWidth * 2) {
+			randomX = screenWidth - buttonWidth * 2;
+		}
 		const randomY = Math.floor(Math.random() * 50);
 		const randomRotate = Math.floor(Math.random() * 60) - 30;
 

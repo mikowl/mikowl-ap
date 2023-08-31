@@ -5,8 +5,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
-
+import Card from "@components/Card.astro";
 // import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import slugify from "@utils/slugify";
@@ -23,7 +22,7 @@ const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 <Layout>
 	<Header />
 	<main id="main-content">
-		<section id="hero">
+		<section id="hero" transition:animate="fade">
 			<!-- <a
         target="_blank"
         href="/rss.xml"
