@@ -1,7 +1,6 @@
 ---
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
-import { Analytics } from "@vercel/analytics/react";
 
 const currentYear = new Date().getFullYear();
 
@@ -25,8 +24,6 @@ const { noMarginTop = false } = Astro.props;
 		</div>
 	</div>
 </footer>
-
-<Analytics client:load />
 
 <style>
 	footer {
