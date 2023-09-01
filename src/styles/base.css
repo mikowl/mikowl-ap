@@ -93,6 +93,7 @@
 	.h2 {
 		@apply mb-6 mt-20 text-2xl font-bold text-skin-base;
 		color: var(--light-green);
+		color: #759beb;
 		border-left: 5px solid var(--light-green);
 		padding-left: 12px;
 		margin-left: -15px;
