@@ -1,11 +1,5 @@
-type IconProps = {
-	size?: number;
-	fill?: string;
-	styles?: any;
-	className?: string;
-};
 
-const Pokeball = (props: IconProps) => {
+const Pokeball = (props: { size?: number; fill?: string; styles?: any; className?: string }) => {
 	const size = props.size ?? 32;
 	return (
 		<svg

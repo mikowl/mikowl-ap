@@ -1,0 +1,348 @@
+---
+author: Michael Elias
+pubDatetime: 2023-08-30
+title: Exploring the state of CSS-in-JS solutions
+postSlug: exploring-css-solutions-for-react
+featured: false
+draft: false
+postThumb: /img/thumbs/css-in-js.jpg
+tags:
+  - css
+  - js
+  - react
+  - css-in-js
+description: Let's take a look at some of the most popular CSS-in-JS solutions and see how they compare.
+---
+
+import { Image } from 'astro:assets'
+import survey from '../../img/CSS-in-JS-state-of.png'
+
+CSS-in-JS is a pattern where CSS is composed using JavaScript, which allows you to manage your component styles in a more modular way and leverage the full power of js within your styles, such as dynamic styling based on props or state.
+
+It can be overwhelming trying to decide which CSS-in-JS solution to use when building a React app. Let's go over some solutions with the highest retention rate according to the recent [2023 State of CSS survey](https://2023.stateofcss.com/).
+
+<Image src={survey} format="avif" class="rounded mix-blend-lighten"  alt="2023 State of CSS survey" />
+
+## CSS Modules
+
+[CSS Modules](https://github.com/css-modules/css-modules) is a tried and true technique that allows you to write CSS in separate files but scope the styles to individual components. What's also nice about it is that it's built into webpack so you don't need to install any additional packages.
+
+Here's a basic example of what it looks like:
+
+```css:Button.module.css
+.button {
+  background: green;
+  color: #fff;
+  padding: 10px;
+}
+
+.error {
+  background: red;
+}
+```
+
+```jsx:Button.jsx
+import styles from './Button.module.css';
+
+const Button = () => {
+  const [error, setError] = useState(false); 
+
+  return (
+    <button className={`${styles.button} ${error && styles.error}`}>
+      Click me
+    </button>;
+  );
+}
+```
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Encapsulates styles within components, preventing CSS leaks and conflicts.
+  - Supports local and global styles.
+  - No need for additional libraries, as it is supported by popular bundlers like Webpack.
+</div>
+<div>
+#### Cons:
+  - Requires you to write styles in separate files, which may be an inconvenience for some developers.
+  - Does not have as many features as other popular CSS-in-JS solutions.
+</div>
+</div>
+
+## Vanilla Extract
+
+[Vanilla Extract](https://vanilla-extract.style/) is a CSS-in-JS library that offers type safety, good theming support, and plenty of extensions. It's an exciting alternative to existing solutions like Styled Components and Emotion. Vanilla Extract leverages TypeScript to provide type safety and generates CSS at build time, offering improved performance compared to other CSS-in-JS libraries.
+
+```jsx
+import { createTheme, style } from '@vanilla-extract/css';
+
+export const [themeClass, vars] = createTheme({
+  color: {
+    brand: 'blue',
+    white: '#fff'
+  },
+  space: {
+    small: '4px',
+    medium: '8px',
+  }
+});
+
+export const hero = style({
+  backgroundColor: vars.color.brandd,
+  color: vars.color.white,
+  padding: vars.space.large
+});
+```
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Zero-runtime cost, as the CSS is extracted at build time and doesn't require any JavaScript to be executed during runtime.
+  - Offers type safety, ensuring that your styles are free from errors and inconsistencies.
+  - Provides a flexible theming system based on CSS variables.
+  - Framework-agnostic, meaning it can be used in any project that supports class names
+</div>
+<div>
+#### Cons:
+  - Less mature and has a smaller community compared to Emotion and Styled Components.
+  - Requires you to write styles in .css.ts files, which may be an inconvenience for some developers.
+</div>
+</div>
+
+Theming is an integral part of Vanilla Extract. You can create a theme structure using createThemeContract, and then create multiple themes that adhere to the same structure
+
+## Styled System
+
+[Styled System](https://styled-system.com/) is a library that provides a set of utility functions for styling components. It is not a CSS-in_JS library itself but more like a layer on top of one that aids in maintaining consistent theming and styling across your app.
+
+Here's a very basic example of how it looks, you can find a more robust<br />
+[example here](https://codesandbox.io/s/github/styled-system/styled-system/tree/master/examples/basic).
+
+```js
+import styled from 'styled-components'
+import { space, color } from 'styled-system'
+
+const Box = styled.div`
+  ${space}
+  ${color}
+`
+
+function App() {
+  return (
+    <Box
+      p={3}
+      bg='blue'
+      color='white'
+    >
+      Hello, Styled System!
+    </Box>
+  )
+}
+```
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Works with any CSS-in-JS library.
+  - Offers a set of predefined styles that can be used to style components.
+  - Provides a flexible theming system based on CSS variables.
+</div>
+<div>
+#### Cons:
+  - Requires a CSS-in-JS library to be installed.
+  - Putting CSS as props on components feels weird to me.
+  - Can get verbose and bulky.
+</div>
+</div>
+
+## Styled Components 
+
+[Styled Components](https://styled-components.com/) is a popular library that allows you to create and use components as a low-level styling construct.
+It's been around for a minute and has a large community behind it.
+
+Here's a basic example from their [docs](https://styled-components.com/docs/basics):
+
+```js
+// Create a Title component that'll render an <h1> tag with some styles
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+// Create a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+// Use Title and Wrapper like any other React component – except they're styled!
+render(
+  <Wrapper>
+    <Title>
+      Hello World!
+    </Title>
+  </Wrapper>
+);
+```
+
+<div class="flex gap-10 pros-cons">
+  <div>
+  #### Pros:
+    - Encapsulates styles within components, preventing CSS leaks and conflicts
+    - Easy to do dynamic styling based on props
+    - Popular and actively maintained
+  </div>
+  <div>
+  #### Cons:
+    - Can be slower than traditional stylesheets due to the lack of caching
+    - Can become difficult to maintain as your app grows
+  </div>
+</div>
+
+## styled-jsx
+
+Created by the folks at [Vercel](https://vercel.com/), styled-jsx is a full, scoped and component-friendly CSS support library for JSX. 
+
+Here's what it looks like:
+
+```jsx
+export default () => (
+  <div className="wrapper">
+    <h1>Hello Styled-JSX</h1>
+    <style jsx>{`
+      .wrapper {
+        background: #3f51b5;
+        padding: 60px 30px;
+      }
+      h1 {
+        color: #ff9800;
+      }
+    `}</style>
+  </div>
+)
+```
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - High-performance runtime-CSS-injection
+  - Full CSS support, no tradeoffs
+  - Built-in CSS vendor prefixing
+  - If you're using Next.js it's automatically configured
+</div>
+<div>
+#### Cons:
+  - Limited features compared to other CSS-in-JS solutions 
+</div>
+</div>
+
+## Theme UI
+
+[Theme UI](https://theme-ui.com/) is a library for creating themeable user interfaces based on constraint-based design principles.
+
+Here's an example from their docs, first you create your theme:
+```jsx
+import type { Theme } from 'theme-ui'
+
+export const theme: Theme = {
+  fonts: {
+    body: 'system-ui, sans-serif',
+    heading: '"Avenir Next", sans-serif',
+    monospace: 'Menlo, monospace',
+  },
+  colors: {
+    text: '#000',
+    background: '#fff',
+    primary: '#33e',
+  },
+}
+```
+
+Then you can style your UI:
+```jsx
+/** @jsxImportSource theme-ui */
+import { ThemeUIProvider } from 'theme-ui'
+import { theme } from './theme'
+
+export const App = () => (
+  <ThemeUIProvider theme={theme}>
+    <h1
+      sx={{
+        color: 'primary',
+        fontFamily: 'heading',
+      }}
+    >
+      Hello
+    </h1>
+  </ThemeUIProvider>
+)
+```
+
+You can also use the `sx` prop to style any component:
+
+```jsx
+/** @jsxImportSource theme-ui */
+
+export default (props) => (
+  <div
+    sx={{
+      fontWeight: 'bold',
+      fontSize: 4, // picks up value from `theme.fontSizes[4]`
+      color: 'primary', // picks up value from `theme.colors.primary`
+    }}
+  >
+    Hello
+  </div>
+)
+```
+
+<div class="flex gap-10 pros-cons">
+<div>
+### Pros:
+  - Consistency and scalability
+  - Ability to easily switch themes
+  - Can style with or without creating components
+</div>
+<div>
+### Cons:
+  - Less mature and has a smaller community compared to other libraries like Emotion and Styled Components.
+</div>
+</div>
+
+## Emotion
+
+[Emotion](https://emotion.sh/) is a flexible and high-performance CSS-in-JS library that supports both string and object styles. 
+
+Here's how it looks:
+
+```jsx
+import styled from '@emotion/styled';
+
+const Button = styled.button`
+  background-color: blue;
+  color: white;
+  padding: 10px;
+`;
+
+function App() {
+  return <Button>Click me</Button>;
+}
+
+export default App;
+```
+
+<div class="flex gap-10 pros-cons">
+<div>
+#### Pros:
+  - Offers a powerful and flexible API for styling components
+  - Smaller size and faster performance than some other CSS-in-JS alternatives
+  - Has a strong community of users and a growing ecosystem of plugins and tools
+</div>
+<div>
+#### Cons:
+  - Can clutter the React Dev Tools as it creates a lot of wrapper components
+</div>
+</div>
+
+There are many more options out there but I just wanted to touch on some of the top from the State of CSS survey. After using a handful of these and reading through the docs I realized they are all trying to solve the same problem but in slightly different ways. At the end of the day it all comes down to personal preference and your projects needs.
