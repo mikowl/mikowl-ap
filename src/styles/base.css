@@ -320,6 +320,7 @@ aside svg {
 	display: inline-block;
 	cursor: default;
 	color: var(--purple-light);
+	cursor: help;
 }
 
 .tooltip-content {
