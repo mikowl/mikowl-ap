@@ -15,8 +15,8 @@ breadcrumbList[0] === "posts" &&
 <nav class="breadcrumb" aria-label="breadcrumb">
 	<ul>
 		<li>
-			<a href="/">Home</a>{' '}
-			<span aria-hidden="true">&#62;</span>{' '}
+			<a href="/">Home</a>{" "}
+			<span aria-hidden="true">&#62;</span>{" "}
 		</li>
 		{
 			breadcrumbList.map((breadcrumb, index) =>
@@ -25,16 +25,17 @@ breadcrumbList[0] === "posts" &&
 						<span
 							class={`${index > 0 ? "lowercase" : "capitalize"}`}
 							aria-current="page"
-						>{' '}
-							{breadcrumb}{' '}
+						>
+							{" "}
+							{breadcrumb}{" "}
 						</span>
 					</li>
 				) : (
 					<li>
-						<a href={`/${breadcrumb}`}>{breadcrumb}</a>{' '}
+						<a href={`/${breadcrumb}`}>{breadcrumb}</a>{" "}
 						<span aria-hidden="true">&#62;</span>
 					</li>
-				)
+				),
 			)
 		}
 	</ul>
