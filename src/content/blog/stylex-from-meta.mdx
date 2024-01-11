@@ -1,0 +1,86 @@
+---
+author: Michael Elias
+pubDatetime: 2024-01-10
+title: StyleX by Meta
+postSlug: stylex-by-meta
+featured: false
+draft: false
+postThumb: /img/thumbs/stylex.jpg
+tags:
+  - css
+  - js
+  - react
+  - css-in-js
+description: With its focus on atomic CSS, type safety, and performance optimizations, StyleX is set to become a key player in the styling of large-scale applications. 
+---
+
+import { Image } from 'astro:assets'
+import prettygood from '/public/img/prettygood.gif'
+
+Shortly after writing about various css in js solutions, Meta released their own solution called [StyleX](https://stylexjs.com/) that looks pretty, pretty, pretty good.
+
+<Image src={prettygood} format="gif" alt="pretty good" className="w-full rounded" />
+
+## What Makes StyleX Stand Out?
+
+  - **Atomic CSS**: It transforms styles into atomic CSS class names, eliminating the need for managing utility classes.
+  - **Performance**: The Babel plugin ensures fast compile times, and the runtime is optimized for combining class name strings efficiently.
+  - **Scalability**: Tailored for large codebases, StyleX minimizes CSS bundle sizes and ensures that styles encapsulate well, even in complex applications.
+  - **Deterministic**: By managing CSS specificity, StyleX guarantees no conflicts between generated rules.
+  - **Composability**: Styles can be easily merged across components, with predictable outcomes.
+  - **Type Safety**: Full typing in TypeScript or Flow ensures that components accept only the styles they are supposed to.
+  - **Colocation**: Styles can be authored in the same file as components, enhancing readability and maintainability.
+
+Let's take a look at a basic example:
+
+```jsx
+const styles = stylex.create({
+  base: {
+    color: 'cornflowerBlue',
+    fontSize: 69,
+  },
+  active: {
+    color: 'papayaWhip',
+  },
+});
+```
+
+You define styles using `stylex.create`. I like this, it looks simple and familiar enough. Let's take a look at a more complex example:
+
+```jsx
+const DARK_MODE = "@media (prefers-color-scheme: dark)"
+
+const s = stylex.create({
+  body: {
+    fontFamily: 'sans-serif',
+    fontSize: '1rem',
+    backgroundColor: {
+      default: "white",
+      [DARK_MODE]: "black",
+    },
+    color: {
+      default: "black",
+      [DARK_MODE]: "white",
+    },
+  }
+})
+```
+
+In this example we store the dark mode media query in a variable and set it as a condition with the style values.
+
+To apply the styles we use `stylex.props`:
+
+```jsx
+<body {...stylex.props(s.body)}>
+  <div
+    {...stylex.props(
+      styles.base,
+      props.isActive && styles.active,
+    )}
+  />
+</body>
+```
+
+## Conclusion
+
+There's [much more](https://stylexjs.com/docs/learn/) StyleX can do but I just wanted to give a quick overview. I'm excited to see how it evolves and how it compares to other solutions. 
