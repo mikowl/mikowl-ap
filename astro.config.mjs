@@ -38,7 +38,7 @@ export default defineConfig({
 		],
 		shikiConfig: {
 			theme: "poimandres",
-			langs: ["js", "ts", "html", "css", "astro"],
+			langs: ["js", "jsx", "tsx", "ts", "html", "css", "astro"],
 			wrap: false,
 		},
 		extendDefaultPlugins: true,
