@@ -6,13 +6,14 @@ import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
+import LinkButton from "@components/LinkButton.astro";
 export interface Props {
 	post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
 
-let { title, author, description, ogImage, pubDatetime, tags } = post.data;
+let { title, author, description, ogImage, postSlug, pubDatetime, tags } = post.data;
 tags = tags.map(tag => slugifyStr(tag));
 
 const { Content } = await post.render();
@@ -54,6 +55,8 @@ const titleClass = title
 		<ul class="tags-container">
 			{tags.map(tag => <Tag name={tag} />)}
 		</ul>
+		<!-- Edit on github link -->
+		<LinkButton href=`https://github.com/mikowl/mikowl-ap/edit/main/src/content/blog/${postSlug}.mdx`>Edit on Github</LinkButton>
 		<div class="text-center">
 			<a type="button" href="/posts" tabindex="0" class="no-underline mb-10">
 				More Posts
