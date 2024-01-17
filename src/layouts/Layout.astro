@@ -2,7 +2,6 @@
 import { SITE } from "@config";
 import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
-import { Analytics } from "@vercel/analytics/react";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -86,11 +85,10 @@ const socialImageURL = new URL(
 				/>
 			)
 		}
-
+		<script is:inline src="https://us.umami.is/script.js" data-website-id="77fc8df6-6a75-4f80-9f92-2d09f648a144"></script>
 		<script is:inline src="/toggle-theme.js"></script>
 	</head>
 	<body>
 		<slot />
-		<Analytics client:load />
 	</body>
 </html>
