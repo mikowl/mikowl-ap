@@ -306,6 +306,9 @@ aside svg {
 .btn.btn-yellow {
 	background: var(--yellow);
 }
+.ex-link {
+	font-size: 0.875rem;
+}
 .squiggle {
 	text-decoration-style: wavy;
 	text-decoration-thickness: 2px;

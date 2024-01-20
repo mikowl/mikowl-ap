@@ -1,18 +1,21 @@
 import { useState } from "react";
 
 const Dadjoke = () => {
-	const [joke, setJoke] = useState<string>("");
+	const [joke, setJoke] = useState("");
 
-	const generateDadJoke = () => {
-		fetch("https://icanhazdadjoke.com/", {
-			headers: {
-				Accept: "application/json",
-			},
-		})
-			.then(res => res.json())
-			.then(data => setJoke(data.joke));
+	const generateDadJoke = async () => {
+		try {
+			const response = await fetch("https://icanhazdadjoke.com/", {
+				headers: {
+					Accept: "application/json",
+				},
+			});
+			const data = await response.json();
+			setJoke(data.joke);
+		} catch (error) {
+			console.log(error);
+		}
 	};
-
 	return (
 		<>
 			<button className="btn btn-purple w-full" onClick={generateDadJoke}>

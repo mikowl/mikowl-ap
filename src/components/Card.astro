@@ -9,12 +9,15 @@ export interface Props {
 }
 
 const { href, frontmatter, secHeading = true } = Astro.props;
-const { title, pubDatetime, description, postThumb } = frontmatter;
+const { title, pubDatetime, description, postThumb, quickLink } = frontmatter;
 ---
 <li class="my-10 flex flex-wrap items-center gap-8 sm:flex-nowrap">
 	{postThumb ? (
 		<div class="post-thumb basis-full sm:basis-1/4">
-			<a href={href}>
+			<a
+				href={quickLink ? quickLink : href}
+				target={quickLink ? "_blank" : "_self"}
+			>
 				<img
 					src={postThumb}
 					class="w-full max-w-sm rounded-md"
@@ -27,7 +30,8 @@ const { title, pubDatetime, description, postThumb } = frontmatter;
 	)}
 	<div class="post-content basis-full sm:basis-3/4">
 		<a
-			href={href}
+			href={quickLink ? quickLink : href}
+			target={quickLink ? "_blank" : "_self"}
 			class="inline-block text-lg font-medium text-skin-accent focus-visible:no-underline focus-visible:underline-offset-0"
 		>
 			{secHeading ? (
@@ -41,6 +45,8 @@ const { title, pubDatetime, description, postThumb } = frontmatter;
 					transition:name={title}
 				>
 					{title}
+				{/* show external link icon if quickLink */}
+				{quickLink && (<span class="ex-link">🔗</span>)}
 				</h3>
 			)}
 		</a>
