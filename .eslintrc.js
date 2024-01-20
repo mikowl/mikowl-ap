@@ -4,10 +4,12 @@ module.exports = {
 		es2022: true,
 		browser: true,
 	},
+	parser: "@typescript-eslint/parser",
 	extends: [
 		"eslint:recommended",
 		"plugin:astro/recommended",
 		"plugin:react-hooks/recommended",
+		"plugin:@typescript-eslint/recommended",
 	],
 	parserOptions: {
 		ecmaVersion: "latest",

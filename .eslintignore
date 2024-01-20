@@ -1,3 +1,4 @@
+*.mdx
 .husky
 .vscode
 node_modules
