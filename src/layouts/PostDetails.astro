@@ -29,19 +29,7 @@ const titleClass = title
 
 <Layout title={title} author={author} description={description} ogImage={ogUrl}>
 	<Header />
-	<div class="mx-auto flex w-full max-w-4xl justify-start px-2">
-		<button
-			class="focus-outline mb-2 mt-8 flex hover:opacity-75"
-			onclick="history.back()"
-		>
-			<svg xmlns="http://www.w3.org/2000/svg"
-				><path
-					d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-				></path>
-			</svg><span>Go back</span>
-		</button>
-	</div>
-	<main id="main-content" class={titleClass}>
+	<main id="main-content" class=`${titleClass} mt-8`>
 		<h1
 			class="post-title text-transparent inline-block bg-[linear-gradient(to_right,#a176c8_10%,#759beb_30%,#65beb3_60%,#70db96_100%)] bg-clip-text subpixel-antialiased"
 			transition:name={title}
@@ -60,7 +48,7 @@ const titleClass = title
 		<div class="text-center">
 			<a type="button" href="/posts" tabindex="0" class="no-underline mb-10">
 				More Posts
-				<svg xmlns="http://www.w3.org/2000/svg" class="astro-J7PV25F6"
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 astro-J7PV25F6"
 					><path
 						d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
 						class="astro-J7PV25F6"></path>
