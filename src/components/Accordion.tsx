@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useUniqueId from "../utils/useUniqueId";
 
 const Accordion = ({
 	heading,
@@ -9,7 +8,7 @@ const Accordion = ({
 	content: string;
 }) => {
 	const [isActive, setIsActive] = useState(false);
-	const panelId = useUniqueId("accordion");
+	const panelId = heading.replace(/\s+/g, "-").toLowerCase();
 
 	return (
 		<div className="accordion">

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import useUniqueId from "../utils/useUniqueId";
 
 type TooltipProps = {
 	content: string;
 	children: React.ReactElement;
 };
 
-const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
+const Tooltip: React.FC<TooltipProps> = ({ content, title }) => {
 	const [show, setShow] = useState(false);
-	const tooltipId = useUniqueId("tooltip");
+	const tooltipId = title + "-tooltip";
 
 	const handleMouseEnter = () => {
 		setShow(true);
@@ -36,7 +35,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
 			tabIndex={0}
 			aria-describedby={tooltipId}
 		>
-			{children}
+			{title}
 			{show && (
 				<span className="tooltip-content" id={tooltipId} role="tooltip">
 					{content}
