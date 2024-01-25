@@ -20,7 +20,7 @@ import Tooltip from "../../components/Tooltip";
 import Accordion from "../../components/Accordion";
 import RandomKitty from "../../components/blog/RandomKitty";
 
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 After installing the [Webpack Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) on a few of my projects I was blown away how heavy some of these, seemingly simple, packages can be. So before immediately reaching for an npm package try to see if you can build the feature yourself. You may find the end result to be well worth your time, ending with a component that is not a only a fraction of the size but also tailored to fit your specific needs. Let's build a few components together!
 
@@ -29,7 +29,7 @@ After installing the [Webpack Bundle Analyzer](https://www.npmjs.com/package/web
 I needed a simple tooltip component so I initially reached for [react-tooltip](https://www.npmjs.com/package/react-tooltip). I ran into some issues with it though in Astro/mdx files and also I really only need a fraction of it's features. It's pretty gnarly that a simple tooltip package is like 45kb minified. So anyways I decided to build my own. I started by looking at the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) for tooltips.
 
 <aside>
-	{/* <Icon name="ion:information-circle-outline" /> */}
+	<Icon name="ion:information-circle-outline" />
 	*Note if you're going to be building your own component/UI I highly recommend
 	checking out [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/).
 	It's a great resource for ensuring your UI is accessible and to follow best practices.
