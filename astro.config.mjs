@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
@@ -24,6 +25,7 @@ export default defineConfig({
 			experimentalReactChildren: true,
 		}),
 		sitemap(),
+		icon(),
 	],
 	markdown: {
 		remarkPlugins: [

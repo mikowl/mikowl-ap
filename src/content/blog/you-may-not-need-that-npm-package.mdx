@@ -18,9 +18,9 @@ description: Let's take a look how we can build some common UI components rather
 
 import Tooltip from "../../components/Tooltip";
 import Accordion from "../../components/Accordion";
-import RandomQuokka from "../../components/blog/RandomQuokka";
+import RandomKitty from "../../components/blog/RandomKitty";
 
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 After installing the [Webpack Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) on a few of my projects I was blown away how heavy some of these, seemingly simple, packages can be. So before immediately reaching for an npm package try to see if you can build the feature yourself. You may find the end result to be well worth your time, ending with a component that is not a only a fraction of the size but also tailored to fit your specific needs. Let's build a few components together!
 
@@ -124,10 +124,10 @@ and here's the css:
 ### Usage:
 
 ```jsx
-<Tooltip content="🎉 This is a tooltip!">Hover over me!</Tooltip>
+<Tooltip content="🎉 This is a tooltip!" title="Hover over me!" />
 ```
 
-That's all there is to it, here's an <Tooltip client:load content="🎉 This is a tooltip!">example</Tooltip> of how it looks. Not too bad, eh?
+That's all there is to it, here's an <Tooltip client:load content="🎉 This is a tooltip!" title="example" /> of how it looks. Not too bad, eh?
 
 ## Accordion Component
 
@@ -243,6 +243,6 @@ And here it is in action:
 
 ## Wrapping up
 
-Hope this helps inspire you to maybe create your own components or something, and they're not too difficult to build. If not umm here have a random quokka:
+Hope this helps inspire you to maybe create your own components or something, and they're not too difficult to build. If not umm here have a random kitten pic:
 
-<RandomQuokka client:load />
+<RandomKitty client:load />
