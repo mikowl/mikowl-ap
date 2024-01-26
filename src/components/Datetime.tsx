@@ -1,10 +1,11 @@
+
 export interface Props {
 	datetime: string | Date;
 	size?: "sm" | "lg";
 	className?: string;
 }
 
-export default function Datetime({ datetime, size = "sm", className }: Props) {
+export default function Datetime({ datetime, size = "lg", className }: Props) {
 	return (
 		<div className={`flex items-center space-x-2 opacity-80 ${className}`}>
 			<svg
@@ -19,7 +20,7 @@ export default function Datetime({ datetime, size = "sm", className }: Props) {
 			</svg>
 			<span className="sr-only">Posted on:</span>
 			<span
-				className={`mt-2 italic ${size === "sm" ? "text-sm" : "text-base"}`}
+				className={`mt-2 text-blue-500`}
 			>
 				<FormattedDatetime datetime={datetime} />
 			</span>
@@ -36,10 +37,10 @@ const FormattedDatetime = ({ datetime }: { datetime: string | Date }) => {
 		day: "numeric",
 	});
 
-	const time = myDatetime.toLocaleTimeString([], {
-		hour: "2-digit",
-		minute: "2-digit",
-	});
+	// const time = myDatetime.toLocaleTimeString([], {
+	// 	hour: "2-digit",
+	// 	minute: "2-digit",
+	// });
 
 	return <>{date}</>;
 };
