@@ -17,53 +17,49 @@ module.exports = {
 		screens: {
 			sm: "640px",
 		},
-
-		// Uncomment the following extend
-		// if existing Tailwind color palette will be used
-
-		// extend: {
-		colors: {
-			transparent: "transparent",
-			current: "currentColor",
-		},
-		textColor: {
-			skin: {
-				base: withOpacity("--color-text-base"),
-				accent: withOpacity("--color-accent"),
-				inverted: withOpacity("--color-fill"),
+		extend: {
+			colors: {
+				transparent: "transparent",
+				current: "currentColor",
+			},
+			textColor: {
+				skin: {
+					base: withOpacity("--color-text-base"),
+					accent: withOpacity("--color-accent"),
+					inverted: withOpacity("--color-fill"),
+				},
+			},
+			backgroundColor: {
+				skin: {
+					fill: withOpacity("--color-fill"),
+					accent: withOpacity("--color-accent"),
+					inverted: withOpacity("--color-text-base"),
+					card: withOpacity("--color-card"),
+					"card-muted": withOpacity("--color-card-muted"),
+				},
+			},
+			outlineColor: {
+				skin: {
+					fill: withOpacity("--color-accent"),
+				},
+			},
+			borderColor: {
+				skin: {
+					line: withOpacity("--color-border"),
+					fill: withOpacity("--color-text-base"),
+					accent: withOpacity("--color-accent"),
+				},
+			},
+			fill: {
+				skin: {
+					base: withOpacity("--color-text-base"),
+					accent: withOpacity("--color-accent"),
+				},
+				transparent: "transparent",
+			},
+			fontFamily: {
+				mono: ["Source Code Pro", "monospace"],
 			},
 		},
-		backgroundColor: {
-			skin: {
-				fill: withOpacity("--color-fill"),
-				accent: withOpacity("--color-accent"),
-				inverted: withOpacity("--color-text-base"),
-				card: withOpacity("--color-card"),
-				"card-muted": withOpacity("--color-card-muted"),
-			},
-		},
-		outlineColor: {
-			skin: {
-				fill: withOpacity("--color-accent"),
-			},
-		},
-		borderColor: {
-			skin: {
-				line: withOpacity("--color-border"),
-				fill: withOpacity("--color-text-base"),
-				accent: withOpacity("--color-accent"),
-			},
-		},
-		fill: {
-			skin: {
-				base: withOpacity("--color-text-base"),
-				accent: withOpacity("--color-accent"),
-			},
-			transparent: "transparent",
-		},
-		fontFamily: {
-			mono: ["Source Code Pro", "monospace"],
-		},
-		// },
 	},
 };
