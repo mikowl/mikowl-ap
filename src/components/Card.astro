@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const { href, frontmatter } = Astro.props;
-const { title, pubDatetime, description, postThumb, quickLink } = frontmatter;
+const { title, author, pubDatetime, description, postThumb, quickLink } = frontmatter;
 ---
 <li class="my-10 flex flex-wrap items-center gap-8 sm:flex-nowrap">
 	{postThumb ? (
@@ -40,9 +40,10 @@ const { title, pubDatetime, description, postThumb, quickLink } = frontmatter;
 					transition:name={title}
 				>
 					{title}
-					{quickLink && <Icon name="ion:open-outline" size={18} class="-translate-y-[2px]" />}
+					{quickLink && <Icon name="ion:open-outline"  size={18} class="text-cyan-400 -translate-y-[1.5px]" />}
 				</h3>
 		</a>
+		{quickLink && <small class="-translate-y-[1px] inline-block italic text-blue-200">by {author}</small>}
 		<Datetime datetime={pubDatetime} />
 		<p>{description}</p>
 	</div>
